@@ -27,11 +27,7 @@ export const Login = () => {
         <>
             <div className="formContent">
                 <div className="content">
-<<<<<<< HEAD:public/src/hebe/pages/Login.jsx
                     <form className="contact-form" action="api/auth/login" method="get">
-=======
-                    <form className="contact-form">
->>>>>>> refs/remotes/origin/conexion-BD:src/hebe/pages/Login.jsx
                         <label>USUARIO</label>
                         <input placeholder="email" type="text" />
                         <br/>
