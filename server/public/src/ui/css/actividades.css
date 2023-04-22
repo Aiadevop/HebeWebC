@@ -1,0 +1,102 @@
+
+.taekwondoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.taekwondoContainerMovil{
+    display: none;
+}
+.taekwondoImg {
+    width: 50%;
+}
+
+.taekwondoImgx{
+    padding: 20px;
+}
+
+.taekwondo{
+    display: flex;
+    padding: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.taekwondo p{
+    font-size: x-large;
+}
+
+.horariocontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;  
+    margin-bottom: 30px;
+    
+}
+
+.horariocontainer div img{
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+.horariocontainer div h2,h3{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.quintela{
+    margin-top: 2%;
+}
+
+
+
+.divHorario {
+    font-weight: 600;
+    font-size: xx-large;
+}
+
+.divHorarioh3 {
+    font-weight: 400;
+    font-size: x-large;
+    margin-bottom: 30px;
+}
+
+
+@media (max-width: 800px) {
+    .taekwondo p{
+        font-size: small;
+    }
+
+    .taekwondoContainerMovil{
+        display: block;
+    }
+
+    .taekwondoContainer{
+        display: none;
+    }
+
+    .horariocontainer{
+        display: block;
+    }
+
+    .horariocontainer div h2,h3{
+        font-size: large;
+    }
+
+    .divHorario {
+        font-weight: 600;
+        font-size: large;
+    }
+    
+    .divHorarioh3 {
+        font-weight: 400;
+        font-size: small;
+        margin-bottom: 30px;
+    }
+}

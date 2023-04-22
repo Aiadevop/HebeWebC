@@ -1,5 +1,0 @@
-export * from './ActInicio'
-export * from './Cartel'
-export * from './Nav'
-export * from './QuienSomos'
-export * from './Slide'

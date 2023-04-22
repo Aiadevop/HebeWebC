@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const uid = require('uid');
 
 const generarJWT = (uid = '') => {
 

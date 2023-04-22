@@ -3,14 +3,22 @@ const Role = require('../models/role');
 const Usuario = require('../models/usuario');
 const Actividad = require('../models/actividad');
 
-const esRoleValido = async(rol = '') => {
-    const existeRol = await Role.findOne({ rol });
-    if (!existeRol) {
-        throw new Error(`El rol ${rol} no está registrado en la BD.`)
-    }
+// const esRoleValido = async(rol = '') => {
+//     const existeRol = await Role.findOne({ rol });
+//     if (!existeRol) {
+//         throw new Error(`El rol ${rol} no está registrado en la BD.`)
+//     }
 
-    return true;
-}
+//     return true;
+// }
+// const esRoleValido = async(rol = '') => {
+//     const existeRol = await Role.findOne({ rol });
+//     if (!existeRol) {
+//         throw new Error(`El rol ${rol} no está registrado en la BD.`)
+//     }
+
+//     return true;
+// }
 
 const emailExiste = async(correo = '') => {
     const existeEmail = await Usuario.findOne({ correo });
@@ -72,7 +80,7 @@ const coleccionesPermitidas = (coleccion ='', colecciones =[])=>{
 
 
 module.exports = {
-    esRoleValido,
+    // esRoleValido,
     emailExiste,
     idExiste,
     existeHorario,

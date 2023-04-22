@@ -1,7 +1,0 @@
-export * from './Actividades/index'
-export * from './Carrito'
-export * from './Contacto'
-export * from './Horarios'
-export * from './Inicio'
-export * from './Productos'
-export * from './ClientesPrivate'

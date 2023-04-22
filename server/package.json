@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "server",
   "version": "1.0.0",
   "description": "",
@@ -17,40 +16,8 @@
     "express": "^4.18.2",
     "express-validator": "^6.15.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22",
+    "uid": "^2.0.2"
   }
-=======
-    "name": "hebetw",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "cross-env NODE_OPTIONS='--inspect=0.0.0.0' node dev",
-        "start": "node app"
-    },
-    "engines": {
-        "node": "18.3.0"
-    },
-    "keywords": [
-        "example",
-        "heroku"
-    ],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "cloudinary": "^1.30.1",
-        "cors": "^2.8.5",
-        "cross-env": "^7.0.3",
-        "dotenv": "^16.0.1",
-        "express": "^4.18.1",
-        "express-fileupload": "^1.4.0",
-        "express-validator": "^6.15.0",
-        "google-auth-library": "^8.1.0",
-        "jsonwebtoken": "^9.0.0",
-        "mongoose": "^6.10.5",
-        "nodemon": "^2.0.19",
-        "uuid": "^8.3.2"
-    }
->>>>>>> refs/remotes/origin/conexion-BD
 }

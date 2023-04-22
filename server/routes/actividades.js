@@ -52,7 +52,7 @@ router.put('/:id',[
 //Borrar Actividad - Admin
 router.delete('/:id', [
     validarJWT,   
-    tieneRole('ADMIN_ROLE', 'VENTAS_ROLE'),
+    tieneRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeActividad),
     validarCampos

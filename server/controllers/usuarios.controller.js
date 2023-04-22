@@ -13,11 +13,11 @@ const usuariosGet = async(req = request, res = response) => {
     //const usu = await Usuario.find();
 
     const { limite = 5, desde = 0 } = req.query;
-    const usu = Usuario.find({ estado: true }) //le puedo poner condiciones
+    const usu = Usuario.find() //le puedo poner condiciones
         .skip(Number(desde))
         .limit(Number(limite)); //hay que transformar el limite a un numero pq siempre devuevle un String si lo escribimos.
 
-    const tot = Usuario.countDocuments({ estado: true });
+    const tot = Usuario.countDocuments();
 
     //metemos las dos promesas en el mismo await para que se ejecuten
     //de manera simultanea y que no esperen la una por la otra.
@@ -32,14 +32,14 @@ const usuariosGet = async(req = request, res = response) => {
     })
 }
 
-const usuariosPost = async(req, res = response) => {
+const usuariosPost = async(req= request, res = response) => {
 
     const { nombre, correo, password, rol } = req.body;
     const usuario = new Usuario({ nombre, correo, password, rol });
 
-    //Encriptar la contraseña
-    const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
-    usuario.password = bcryptjs.hashSync(password, salt); //encriptarlo en una sola vía.
+    // //Encriptar la contraseña
+    // const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
+    // usuario.password = bcryptjs.hashSync(password, salt); //encriptarlo en una sola vía.
 
     console.log(usuario);
     //Guardar en la BD
