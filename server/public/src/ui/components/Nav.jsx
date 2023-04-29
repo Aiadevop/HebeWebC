@@ -51,26 +51,26 @@ export const Nav = () => {
                         <ul className={menuOpened ? 'nav-menu nav-menu_visible' : 'nav-menu'}  >
 
                             <li className='nav-menu-item ho'>
-                                <NavLink className="nav-menu-link nav-link" to="/taekwondo">Taekwondo</NavLink>
+                                <NavLink className="nav-menu-link nav-link" to="/taekwondo" onClick={() => setMenuOpened(!menuOpened)}>Taekwondo</NavLink>
                             </li>
                             <li className='nav-menu-item ho'>
-                                <NavLink className="nav-menu-link nav-link" to="/funcore">FunCore</NavLink>
+                                <NavLink className="nav-menu-link nav-link" to="/funcore" onClick={() => setMenuOpened(!menuOpened)}>FunCore</NavLink>
                             </li>
                             <li className='nav-menu-item ho'>
-                                <NavLink className="nav-menu-link nav-link" to="/tricking">Tricking</NavLink>
+                                <NavLink className="nav-menu-link nav-link" to="/tricking" onClick={() => setMenuOpened(!menuOpened)}>Tricking</NavLink>
                             </li>
                             <li className='nav-menu-item ho'>
-                                <NavLink className="nav-menu-link nav-link" to="/pilates">Pilates</NavLink>
+                                <NavLink className="nav-menu-link nav-link" to="/pilates" onClick={() => setMenuOpened(!menuOpened)}>Pilates</NavLink>
                             </li>
                             <br></br>
                           
                             <li className='nav-menu-item ne'>
                                 <img src="../src/ui/iconos/kimono.png" className="logoHebe" alt="Comprar productos" />
-                                <NavLink className="nav-menu-link nav-link" to="/productos">Productos</NavLink>
+                                <NavLink className="nav-menu-link nav-link" to="/productos" onClick={() => setMenuOpened(!menuOpened)}>Productos</NavLink>
                             </li>
                             <li className='nav-menu-item ne'>
                                 <img src="../src/ui/iconos/llamada.png" className="logoHebe llamada" alt="Contactar" />
-                                <NavLink className="nav-menu-link nav-link" to="/pilates">Contacto</NavLink>
+                                <NavLink className="nav-menu-link nav-link" to="/pilates" onClick={() => setMenuOpened(!menuOpened)}>Contacto</NavLink>
                             </li>
 
                             <li className='nav-menu-item carrologin ne'>

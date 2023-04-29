@@ -11,6 +11,14 @@ const UsuarioSchema = Schema({
         type: String,
         required: [true, 'El nombre es obligatorio']
     },
+    dni:{
+        type: String,
+        required: [true, 'El dni es obligatorio']
+    },
+    telefono:{
+        type: Number,
+        required: [true, 'El teléfono es obligatorio']
+    },
     correo: {
         type: String,
         required: [true, 'El correo es obligatorio.'],

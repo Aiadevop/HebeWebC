@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { Carrito, Inicio, Contacto, Horarios, Productos, Tricking, FunCore, Pilates, Taekwondo } from "../../hebe/pages/index.js"
 import { Nav } from "../../ui"
 import { Login } from "../pages/Login"
+import { Atribuciones } from "../pages/Atribuciones.jsx"
 
 
 
@@ -26,6 +27,7 @@ export const HebeRoutes = () => {
             <Route path="pilates" element={<Pilates />}></Route>
             <Route path="taekwondo" element={<Taekwondo />}></Route>          
             <Route path="login" element={<Login/>}></Route>          
+            <Route path="atribuciones" element={<Atribuciones/>}></Route>          
 
           </Routes>
     </>

@@ -103,7 +103,7 @@ const buscarUsuarios = async (termino = '', res = response) => {
     const regex = new RegExp(termino, 'i');
 
     const usuarios = await Usuario.find({
-        $or: [{ nombre: regex }, { correo: regex }],
+        $or: [{ nombre: regex }, { correo: regex }, { dni: regex }],
         $and: [{ estado: true }]
     });
 

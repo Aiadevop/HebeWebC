@@ -8,6 +8,8 @@ package.json manipulado para poder usar carousel
 
 npm i react-responsive-carousel
 
+npm install axios
+
 Para trabajar con la base de datos:
 
 Documentación en https://www.mongodb.com/docs/drivers/node/current/quick-start/create-a-connection-string/

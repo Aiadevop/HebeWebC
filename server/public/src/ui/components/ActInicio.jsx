@@ -19,7 +19,7 @@ export function ActInicio() {
                     </NavLink>
                     <NavLink className="carta" to="/pilates">
                         <div className="cartaActividad" >
-                            <img className="imagenicon" src="../src/ui/iconos/pilatesicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="../src/ui/iconos/pilatesfino.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Pilates</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
@@ -33,7 +33,7 @@ export function ActInicio() {
                     </NavLink>
                     <NavLink className="carta" to="/tricking">
                         <div className="cartaActividad" >
-                            <img className="imagenicon" src="../src/ui/iconos/trickingicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="../src/ui/iconos/deporte.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Tricking</h2>
                             <p className="picon">Saber más ...</p>
                         </div>

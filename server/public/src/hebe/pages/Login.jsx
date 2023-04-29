@@ -1,45 +1,41 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom"
-import { AuthContext } from "../../auth/context";
-import "../../ui/css/form.css";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 
 
 
 export const Login = () => {
 
-    //llamamos directamente lo que queremos de otra página
-    const { login } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const [users, setUsers] = useState([])
+    console.log(users)
 
-    const onLogin = () => {
+    const getUsers = async () => {
 
-        const lastPath = localStorage.getItem('lastPath') || '/auth/Usuarios';
-
-        login('Lara')
-
-        navigate(lastPath, {
-            replace: true
-        })
+        const { data } = await (axios.get('http://localhost:8080/api/usuarios?limite=100'))
+        const usuarios = data.usuarios
+        setUsers(usuarios)
+        return usuarios;
     }
+
+    useEffect(() => {
+        getUsers()
+    }, [])
 
 
     return (
         <>
-            <div className="formContent">
-                <div className="content">
-                    <form className="contact-form" action="api/auth/login" method="get">
-                        <label>USUARIO</label>
-                        <input placeholder="email" type="text" />
-                        <br/>
-                        <label>CONTRASEÑA</label>
-                        <input placeholder="password" type="current-password" />
-                        <br/>
-                        <input className="submitLogin" value="ENTRAR" type="submit" onClick={onLogin}/>
-                        <br/>
-                    </form>
-
-                    <Link to="/" className="registro"><h4>Registrarme</h4></Link>
-                </div>
+            <br />
+            <h1>Admin</h1>
+            <div className='users'>
+                <ol>
+                    {
+                        users.map(({ id, nombre, correo }) => (
+                            <>
+                                <li key={id}>{nombre} </li>
+                                <li>{correo}</li>
+                            </>
+                        ))}
+                </ol>
             </div>
         </>
     )

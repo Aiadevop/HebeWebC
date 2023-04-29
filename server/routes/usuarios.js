@@ -24,16 +24,6 @@ const router = Router();
 
 router.get('/', usuariosGet);
 
-//Actualizar DATA: ej. datos actualizados
-router.put('/:id', [
-        //middlewares
-        check('id', 'No es un id válido').isMongoId(),
-        check('id').custom(idExiste), 
-        check('rol'),
-        validarCampos
-    ],
-    usuariosPut);
-
 //Nuevos recursos: ej. usuario creado
 //si router.post{opc1(ruta,controlador) / opc2(ruta,middleware,controlador)}
 router.post('/', [
@@ -44,6 +34,17 @@ router.post('/', [
     check('correo').custom(emailExiste),
     validarCampos,
 ], usuariosPost);
+
+//Actualizar DATA: ej. datos actualizados
+router.put('/:id', [
+        //middlewares
+        check('id', 'No es un id válido').isMongoId(),
+        check('id').custom(idExiste), 
+        check('rol'),
+        validarCampos
+    ],
+    usuariosPut);
+
 
 //Borra algo
 router.delete('/:id', [
