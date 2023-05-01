@@ -28,6 +28,8 @@ router.get('/', usuariosGet);
 //si router.post{opc1(ruta,controlador) / opc2(ruta,middleware,controlador)}
 router.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    check('telefono', 'El telefono es obligatorio').not().isEmpty(),
+    check('dni', 'El dni es obligatorio').not().isEmpty(),
     check('correo', 'El correo no es válido').isEmail(),
     check('password', 'La contraseña debe tener al menos 8 caracteres').isLength({ min: 8 }),
     check('rol', 'El rol no es correcto').isIn(['ADMIN_ROLE', 'USER_ROLE']),
@@ -48,9 +50,9 @@ router.put('/:id', [
 
 //Borra algo
 router.delete('/:id', [
-    validarJWT,
+    // validarJWT,
     //esAdminRole, (esto solo vale para AdminRole si queremos + variables distinto middleware, el de abajo.)
-    tieneRole('ADMIN_ROLE', 'USER_ROLE'),
+    // tieneRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(idExiste),
     validarCampos

@@ -4,20 +4,19 @@ const Usuario = require('../models/usuario');
 
 
 
-const usuariosGet = async(req = request, res = response) => {
-
-    //Si no le meto el parametro nombre es no name
-    //const { q, nombre = "No name", apikey, page, limit } = req.query;
+const usuariosGet = async (req = request, res = response) => {
 
     //muestra todos los usuarios.
     //const usu = await Usuario.find();
 
     const { limite = 5, desde = 0 } = req.query;
-    const usu = Usuario.find() //le puedo poner condiciones
+  
+    const usu = Usuario.find({ estado: true }) //le puedo poner condiciones
         .skip(Number(desde))
-        .limit(Number(limite)); //hay que transformar el limite a un numero pq siempre devuevle un String si lo escribimos.
+        .limit(Number(limite)); //hay que transformar el limite a un numero pq siempre devuelve un String si lo escribimos.
 
-    const tot = Usuario.countDocuments();
+    const tot = Usuario.countDocuments({ estado: true });
+
 
     //metemos las dos promesas en el mismo await para que se ejecuten
     //de manera simultanea y que no esperen la una por la otra.
@@ -26,16 +25,17 @@ const usuariosGet = async(req = request, res = response) => {
         usu
     ])
 
+
     res.status(200).json({
         total,
         usuarios
     })
 }
 
-const usuariosPost = async(req= request, res = response) => {
+const usuariosPost = async (req = request, res = response) => {
 
-    const { nombre, correo, password, rol } = req.body;
-    const usuario = new Usuario({ nombre, correo, password, rol });
+    const { nombre, correo, password, rol, dni, telefono } = req.body;
+    const usuario = new Usuario({ nombre, correo, password, rol, dni, telefono });
 
     // //Encriptar la contraseña
     // const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
@@ -52,7 +52,7 @@ const usuariosPost = async(req= request, res = response) => {
 
 
 //Actualización de datos de usuario.
-const usuariosPut = async(req, res = response) => {
+const usuariosPut = async (req, res = response) => {
 
     //params.(nombre que se puso en la ruta.)
     const { id } = req.params;
@@ -74,7 +74,7 @@ const usuariosPut = async(req, res = response) => {
     })
 }
 
-const usuariosDelete = async(req, res = response) => {
+const usuariosDelete = async (req, res = response) => {
 
     const { id } = req.params;
 

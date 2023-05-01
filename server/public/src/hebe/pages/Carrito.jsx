@@ -11,15 +11,15 @@ export const Carrito = () => {
     event.preventDefault();
     try {
 
-      const response = await fetch(`http://localhost:5173/api/usuarios?limite=${numeroInput}`, {
+      const response = await fetch(`http://localhost:8080/api/usuarios?limite=10`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          numero: numeroInput,
+        // body: JSON.stringify({
+        //   numero: numeroInput,
    
-        }),
+        // }),
 
       });
 
@@ -47,13 +47,13 @@ export const Carrito = () => {
           <div>
             <form onSubmit={onSubmit}>
               <label>¿Cuántos usuarios quieres ver?</label>
-              <input
+              {/* <input
                 type="text"
                 name="numero"
                 placeholder="numero"
                 value={numeroInput}
                 onChange={(e) => setnumeroInput(e.target.value)}
-              />     
+              />      */}
             
               <br/>
               <input type="submit" value="Enviar" />

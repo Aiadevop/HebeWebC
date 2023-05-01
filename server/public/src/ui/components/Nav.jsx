@@ -95,7 +95,7 @@ export const Nav = () => {
                             </NavLink>
                         </li>
                         <li className='nav-menu-item ne'>
-                            <NavLink className="boton" to="/login">
+                            <NavLink className="" to="/adminlogin">
                                 <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="logoHebe" alt="Login" /></button>
                             </NavLink>
                         </li>
