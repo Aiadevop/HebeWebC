@@ -54,6 +54,7 @@ h1{
 
 .imagenicon {
   width: 250px;
+  padding: 20%;
 }
 
 .h2icon {
@@ -66,6 +67,14 @@ h1{
     display: none;
   }
 
+  .imagenicon {
+    padding: 10%;
+  }
+
+  .h2icon {
+    font-size: 100%;
+  }
+
   .imageContainerMobile {
     padding: 30px;
     margin-top: -25px;
@@ -73,7 +82,7 @@ h1{
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .imageContainerMobile{
     display: flex;
     justify-content: center;
@@ -96,7 +105,7 @@ h1{
   }
 
   .picon {
-    font-size: 120%;
+    font-size: small;
   }
 
   h1{
@@ -104,7 +113,7 @@ h1{
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .cartaActividad {
     padding: 15%;
   }

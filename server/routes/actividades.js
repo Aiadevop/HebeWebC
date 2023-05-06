@@ -34,11 +34,10 @@ router.get('/:id', [
 
 //Crear Actividad - privado con cualquier persona con token valido.
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('actividad', 'El nombre de la actividad es obligatorio.').not().isEmpty(),
-    validarHorario,
-    check('horario', 'El horario es obligatoria.').not().isEmpty(),
-    check('descripcion', 'La descripción es obligatoria.').not().isEmpty(),
+    // validarHorario,
+    // check('horario', 'El horario es obligatoria.').not().isEmpty(),
     validarCampos
 ], crearActividad);
 
@@ -51,12 +50,14 @@ router.put('/:id',[
 
 //Borrar Actividad - Admin
 router.delete('/:id', [
-    validarJWT,   
-    tieneRole('ADMIN_ROLE', 'USER_ROLE'),
+    // validarJWT,   
+    // tieneRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeActividad),
     validarCampos
 ], borrarActividad);
+
+
 
 
 

@@ -1,36 +1,35 @@
-.contenedor{
+.contenedor {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 25px;
 }
 
-.cartel{
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center; 
+.cartel {
+  display: none;
 }
 
-.cartelmovil{
+.cartelmovil {
   display: none;
 }
 
 @media (max-width: 1300px) {
-  .contenedor{
+  .contenedor {
     margin-top: -20px;
   }
 
-  .cartel{
+}
+
+@media (max-width: 700px) {
+  .boxslide {
     display: none;
   }
 
-  .cartelmovil{
+  .cartelmovil {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
 }
 
 /* .padre {

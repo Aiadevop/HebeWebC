@@ -7,48 +7,23 @@ const ActividadSchema = Schema({
 
     actividad: {
         type: String,
-        required: [true, 'La actividad es obligatoria.'],
-        unique:true
-
-    },
-    estado: {
-        type: Boolean,
-        default: true,
-        required: true
-    },
-    usuario: {
-        type: Schema.Types.ObjectId,
-        ref: 'Usuario',
-        required: true
+        required: [true, 'La actividad es obligatoria.']
     },
     precio: {
-        type:Number,
+        type: Number,
         default:0
     },
-    horario:{
+    horario:[{
         type: Schema.Types.ObjectId,
         ref:'Horario',
-        required: true
-    },
-    descripcion:{
-        type: String
-    },
-    disponible: {
-        type: Boolean,
-        default: true
-    },
-    img: {
-        type: String
-    }
-
-
+    }]
 });
 
 ActividadSchema.methods.toJSON = function() {
 
     //Se saca la versión y el password y todos los demás aparecen.
-    const { __v, estado, ...actividad } = this.toObject();
+    const { __v, ...actividad } = this.toObject();
     return actividad;
 }
 
-module.exports = model('actividad', ActividadSchema)
+module.exports = model('Actividad', ActividadSchema)

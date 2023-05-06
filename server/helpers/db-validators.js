@@ -45,7 +45,7 @@ const existeHorario = async(id) => {
     if (!existeHorario) {
         throw new Error(`Este id de horario: ${id}, no existe en la BD.`)
     }
-    console.log('El horario ',id, ' existe.');
+   
     if(Usuario.estado===false){
         throw new Error(`El horario con id: ${id}, ya no existe en la BD.`)
     }

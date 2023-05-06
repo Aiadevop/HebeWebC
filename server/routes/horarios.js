@@ -4,7 +4,9 @@ const {
     crearHorario, 
     obtenerHorario, 
     obtenerHorarios, 
-    actualizarHorario, 
+    actualizarHorario,
+    añadirUsuarioAlHorario,
+    borrarUsuarioDelHorario, 
     borrarHorario } = require('../controllers/horarios.controller');
 const { existeHorario} = require('../helpers/db-validators');
 
@@ -33,7 +35,7 @@ router.get('/:id', [
 
 //Crear horario - privado con cualquier persona con token valido.
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('horario', 'El nombre de la Horario es obligatorio.').not().isEmpty(),
     validarCampos
 
@@ -48,12 +50,26 @@ router.put('/:id',[
 
 //Borrar Horario - Admin
 router.delete('/:id', [
-    validarJWT,   
-    tieneRole('ADMIN_ROLE', 'USER_ROLE'),
+    // validarJWT,   
+    // tieneRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeHorario),
     validarCampos
 ], borrarHorario);
+
+//Añadir usuario a la actividad
+router.put('/usuario/:id',[
+    check('id', 'No es un id válido').isMongoId(),
+    check ('id').custom(existeHorario),
+    validarCampos
+],añadirUsuarioAlHorario);
+
+//Borrar usuario de la actividad
+router.delete('/usuario/:id',[
+    check('id', 'No es un id válido').isMongoId(),
+    check ('id').custom(existeHorario),
+    validarCampos
+],borrarUsuarioDelHorario)
 
 
 

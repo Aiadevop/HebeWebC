@@ -1,5 +1,5 @@
 const { response, json } = require("express");
-const { Horario } = require("../models");
+const { Horario, Actividad } = require("../models");
 const horario = require("../models/horario");
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
@@ -40,25 +40,29 @@ const obtenerHorario = async (req, res=response) =>{
 
 const crearHorario = async (req, res=response) => {
 
-    const horario = req.body.horario.toUpperCase();
+    const {horario, actividad} = req.body;
 
-    const horarioDB = await Horario.findOne({horario})
+
+    const horarioDB = await Horario.findOne({horario,actividad})
 
     if(horarioDB){
         res.status(400).json({
-            msg: `El horario ${horario} ya existe`
+            msg: `El horario ${horario} y actividad ${actividad} ya existe`
         })
         return
     };
 
-    const data = {
-        horario,
-        usuario: req.usuario._id
-    }
-    console.log(data);
+    const actividadModel = await Actividad.findById(actividad)
+    const nombreActividad = actividadModel.actividad
 
+    const nombreHorario = nombreActividad.concat(" "+horario)
+
+    const data = {
+        horario:nombreHorario,
+        actividad, 
+        nombreActividad,
+    }
     const horariox = new Horario (data);
-    console.log(horariox);
     await horariox.save(horariox);
     res.status(201).json(data);
 }
@@ -69,19 +73,78 @@ const actualizarHorario = async (req, res=response) =>{
   
     const { id } = req.params;
     const { usuario, estado, ...resto } = req.body;
-    console.log(resto,'Hola');
+  
 
     resto.horario  = resto.horario.toUpperCase();
       
     //encuentra una horario y lo actualiza
     const horarios = await Horario.findByIdAndUpdate(id,resto, {new:true});
-    //con eso se mira en la respuesta la nueva información
-    console.log(horarios);
 
     res.status(400).json({
         horarios
     })
 }
+
+//Actualizaractividad - recibir el nombre
+
+const añadirUsuarioAlHorario = async (req, res = response) => {
+
+    const { id } = req.params;
+    const { usuario} = req.body;
+
+    try {
+        const horarioDB = await Horario.findById(id);
+         const usuarioHorarioDB = await Horario.findOne({ 'horario._id': id, 'usuario._id': usuario})
+        if (usuarioHorarioDB) {
+            res.status(400).json({
+                msg: `El usuario ya esta registrado en este horario`
+            })
+            return;
+        };
+
+        //encuentra una actividad y lo actualiza
+        // const actividades = await Actividad.findByIdAndUpdate(id,usuario,{new:true});
+        horarioDB.usuario.push(usuario);
+        await horarioDB.save();
+
+        res.status(200).json({
+            horarioDB
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario a la actividad.' });
+    }
+}
+
+//Borrar usuario de la actividad
+const borrarUsuarioDelHorario = async (req, res = response) => {
+
+    const { id } = req.params;
+    const { usuario } = req.body;
+
+    try {
+        const actividadDB = await Actividad.findById(id);      
+        if (!actividadDB.usuario.includes(usuario)) {
+            res.status(400).json({
+                msg: `El usuario no esta registrado en esta actividad`
+            })
+            return
+        };
+
+        //encuentra una actividad y lo actualiza
+        // const actividades = await Actividad.findByIdAndUpdate(id,usuario,{new:true});
+        actividadDB.usuario.pull(usuario);
+        await actividadDB.save();
+
+        res.status(200).json({
+            actividadDB
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario a la actividad.' });
+    }
+}
+
 
 //BorrarHorario - estado false
 
@@ -89,7 +152,7 @@ const borrarHorario = async (req, res=response) =>{
 
     const { id } = req.params;
 
-    const {horario} = await Horario.findByIdAndUpdate(id, { estado: false });
+    const {horario} = await Horario.findByIdAndDelete(id);
 
     res.json({
         "Horario borrado": horario
@@ -102,6 +165,8 @@ module.exports = {
     borrarHorario,
     crearHorario,
     obtenerHorario,
-    obtenerHorarios,    
+    obtenerHorarios,
+    añadirUsuarioAlHorario,
+    borrarUsuarioDelHorario   
     
 }

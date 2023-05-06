@@ -9,18 +9,28 @@ const HorarioSchema = Schema({
         type: String,
         required: [true, 'El horario es obligatorio.'],
         unique:true
-
     },
+
+    actividad: {
+        type: Schema.Types.ObjectId,
+        ref: 'Actividad',
+        required: true,     
+    },
+    nombreActividad:{
+        type:String
+    },
+
+    usuario: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true
+    }],
+
     estado: {
         type: Boolean,
         default: true,
         required: true
-    },
-    usuario: {
-        type: Schema.Types.ObjectId,
-        ref: 'Usuario',
-        required: true
-    }
+    }     
 
 });
 

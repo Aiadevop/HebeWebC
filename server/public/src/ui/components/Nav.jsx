@@ -7,7 +7,7 @@ import '../css/nav.css'
 export const Nav = () => {
     const navigate = useNavigate();
     const { user, logout } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
 
     const [menuOpened, setMenuOpened] = useState(false);
 
@@ -39,8 +39,8 @@ export const Nav = () => {
                         <img src="../src/ui/iconos/hamburguesa.png" className='toggle logoHebe' onClick={() => setMenuOpened(!menuOpened)} alt="Menu Hamburguesa" />
 
                         <li className='nav-menu-item'>
-                            <Link to="/" className='logo nav-link nav-link'>
-                                <img src="../src/ui/img/logonegro.jpeg" className="logoHebe" alt="HebeLogo" />
+                            <Link to="/" className='logo nav-link nav-link' onClick={() => setMenuOpened(false)}>
+                                <img src="../src/ui/img/logos/hebeNegro.png" className="logoHebe" alt="HebeTaekwondoLogo" />
                             </Link>
                         </li>
                     </div>
@@ -64,22 +64,22 @@ export const Nav = () => {
                             </li>
                             <br></br>
                           
-                            <li className='nav-menu-item ne'>
+                            {/* <li className='nav-menu-item ne'>
                                 <img src="../src/ui/iconos/kimono.png" className="logoHebe" alt="Comprar productos" />
                                 <NavLink className="nav-menu-link nav-link" to="/productos" onClick={() => setMenuOpened(!menuOpened)}>Productos</NavLink>
-                            </li>
-                            <li className='nav-menu-item ne'>
+                            </li> */}
+                            {/* <li className='nav-menu-item ne'>
                                 <img src="../src/ui/iconos/llamada.png" className="logoHebe llamada" alt="Contactar" />
                                 <NavLink className="nav-menu-link nav-link" to="/pilates" onClick={() => setMenuOpened(!menuOpened)}>Contacto</NavLink>
-                            </li>
-
+                            </li> */}
+{/* 
                             <li className='nav-menu-item carrologin ne'>
                                 <NavLink className="nav-menu-link nav-link carro" to="/carrito">
                                     <img src="../src/ui/iconos/carro1.png" className="logoHebe login" alt="Carro Compra" />
                                 </NavLink>
-                            </li>
+                            </li> */}
                             <li className='nav-menu-item carrologin'>
-                                <NavLink className="boton" to="/login">
+                                <NavLink className="" to="/adminlogin">
                                     <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="login" alt="Login" /></button>
                                 </NavLink>
                             </li>
@@ -89,11 +89,11 @@ export const Nav = () => {
 
                     <div className='grupo3'>
 
-                        <li className='nav-menu-item ne '>
+                        {/* <li className='nav-menu-item ne '>
                             <NavLink className="nav-menu-link nav-link carro" to="/carrito">
                                 <img src="../src/ui/iconos/carro1.png" className="logoHebe " alt="Carro Compra" />
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li className='nav-menu-item ne'>
                             <NavLink className="" to="/adminlogin">
                                 <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="logoHebe" alt="Login" /></button>

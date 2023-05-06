@@ -27,7 +27,12 @@ const UsuarioSchema = Schema({
     password: {
         type: String,
         required: [true, 'La contraseña es obligatoria.']
-    },
+    }, 
+    horario:[{
+        type:Schema.Types.ObjectId,
+        ref: 'Horario',
+        required:false,
+    }],
     img: {
         type: String
     },

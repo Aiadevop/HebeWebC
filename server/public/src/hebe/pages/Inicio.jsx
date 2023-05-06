@@ -1,4 +1,5 @@
-import { ActInicio, Cartel, Footer, Horarios, QuienSomos } from "../../ui/components"
+import { ActInicio, Cartel, Footer, Horarios, QuienSomos, Slide } from "../../ui/components"
+import "../../ui/css/cartel.css";
 
 
 
@@ -6,7 +7,9 @@ export const Inicio = () => {
 
   return (
     <>
-      <Cartel />
+      <Slide/>
+      <Cartel/>
+      <br/>
       <ActInicio />
       <QuienSomos />
       <Horarios/>    
