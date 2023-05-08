@@ -42,7 +42,6 @@ const crearHorario = async (req, res=response) => {
 
     const {horario, actividad} = req.body;
 
-
     const horarioDB = await Horario.findOne({horario,actividad})
 
     if(horarioDB){
@@ -54,16 +53,17 @@ const crearHorario = async (req, res=response) => {
 
     const actividadModel = await Actividad.findById(actividad)
     const nombreActividad = actividadModel.actividad
-
-    const nombreHorario = nombreActividad.concat(" "+horario)
+    // const nombreHorario = nombreActividad ? nombreActividad.concat(" "+horario):horario;
 
     const data = {
-        horario:nombreHorario,
+        // horario: nombreHorario,     
+        horario,
         actividad, 
         nombreActividad,
     }
     const horariox = new Horario (data);
-    await horariox.save(horariox);
+    console.log(horariox)
+    await horariox.save();
     res.status(201).json(data);
 }
 

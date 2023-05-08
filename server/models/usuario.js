@@ -28,7 +28,7 @@ const UsuarioSchema = Schema({
         type: String,
         required: [true, 'La contraseña es obligatoria.']
     }, 
-    horario:[{
+    horarioUsuario:[{
         type:Schema.Types.ObjectId,
         ref: 'Horario',
         required:false,

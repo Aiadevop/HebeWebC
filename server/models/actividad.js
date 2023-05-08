@@ -13,7 +13,7 @@ const ActividadSchema = Schema({
         type: Number,
         default:0
     },
-    horario:[{
+    horarioActividad:[{
         type: Schema.Types.ObjectId,
         ref:'Horario',
     }]

@@ -45,7 +45,7 @@ const usuariosPost = async (req = request, res = response) => {
     //Guardar en la BD
     await usuario.save(usuario);
 
-    res.json({
+    res.status(200).json({
         usuario,
 
     });
@@ -77,16 +77,15 @@ const usuariosPut = async (req, res = response) => {
 
 const usuariosDelete = async (req, res = response) => {
 
-    const { id } = req.params;
-
-    //const uid = req.uid;
+    const { id } = req.params;  
 
     //EL DELETE SOLO FUNCIONA CON USUARIOS ESPECIFICOS EJEMPLO EL ADMIN.
 
     //Si queremos borrarlo físicamente.
-    //const usuario = await Usuario.findByIdAndDelete(id);
-
-    const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+    const usuario = await Usuario.findByIdAndDelete(id);
+    
+    //Si queremos cambiar el estado a false para seguir manteniendo los datos del usuario.
+    // const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
     res.json({
 

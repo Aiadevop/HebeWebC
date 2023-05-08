@@ -42,7 +42,7 @@ router.put('/:id', [
         //middlewares
         check('id', 'No es un id válido').isMongoId(),
         check('id').custom(idExiste), 
-        check('rol'),
+        // check('rol'),
         validarCampos
     ],
     usuariosPut);

@@ -1,28 +1,17 @@
 const { response, json } = require("express");
 const { Actividad } = require("../models");
 const mongoose = require('mongoose');
+const actividad = require("../models/actividad");
 const { Schema } = mongoose;
 
 //obtenerActividades - paginado - nºactividades - metodo populate
 
 const obtenerActividades = async (req, res = response) => {
 
-    const { limite = 5, desde = 0 } = req.query;
-    const act = Actividad.find({ estado: true })
-        .populate('usuario', 'nombre')
-        .populate('actividad', 'actividad')
-        .skip(Number(desde))
-        .limit(Number(limite));
-    const tot = Actividad.countDocuments({ estado: true });
-
-    const [total, actividades] = await Promise.all([
-        tot,
-        act
-    ])
+    const act = await Actividad.find()
 
     res.status(200).json({
-        total,
-        actividades
+        act
     })
 }
 
@@ -30,7 +19,7 @@ const obtenerActividades = async (req, res = response) => {
 
 const obtenerActividad = async (req, res = response) => {
     const { id } = req.params;
-    const actividad = await Actividad.findById(id).populate('actividad', 'actividad').populate('usuario', 'nombre');
+    const actividad = await Actividad.findById(id);
     if (!actividad) {
         res.status(400).json({
             msg: `El id de esta actividad no existe.`
@@ -49,7 +38,7 @@ const crearActividad = async (req, res = response) => {
     const actividad = req.body.actividad.toUpperCase();
 
     const actividadDB = await Actividad.findOne({ actividad })
-   
+
 
     if (actividadDB) {
         res.status(400).json({
@@ -74,14 +63,16 @@ const crearActividad = async (req, res = response) => {
 const actualizarActividad = async (req, res = response) => {
 
     const { id } = req.params;
-    const { usuario, ...resto } = req.body;
-    resto.actividad = resto.actividad.toUpperCase();
+    const { ...resto } = req.body;
+    if(resto.actividad){
+        resto.actividad = resto.actividad.toUpperCase();
+    }
 
     //encuentra una actividad y lo actualiza
-    const actividades = await Actividad.findByIdAndUpdate(id, resto, { new: true });
+    const actividades = await Actividad.findByIdAndUpdate(id, resto);
 
     res.status(400).json({
-        actividades
+        "Actividad actualizada":actividades.actividad
     })
 }
 
@@ -91,7 +82,7 @@ const borrarActividad = async (req, res = response) => {
 
     const { id } = req.params;
 
-    const { actividad } = await Actividad.findByIdAndUpdate(id, { estado: false });
+    const { actividad } = await Actividad.findByIdAndDelete(id);
 
     res.json({
         "Actividad borrada": actividad
@@ -107,6 +98,6 @@ module.exports = {
     crearActividad,
     obtenerActividad,
     obtenerActividades
-  
+
 
 }
