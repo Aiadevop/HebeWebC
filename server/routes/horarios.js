@@ -40,10 +40,10 @@ router.post('/', [
     check('dia', 'El dia es obligatorio.').not().isEmpty(),
     check('desde', 'El desde es obligatorio.').not().isEmpty(),
     check('hasta', 'El hasta es obligatorio.').not().isEmpty(),
-    check('sala', 'La sala es obligatorio.').not().isEmpty(),
-    check('actividad', 'La actividad es obligatorio.').not().isEmpty(),
+    check('sala', 'La sala es obligatoria.').not().isEmpty(),
+    check('actividad', 'La actividad es obligatoria.').not().isEmpty(),
+    check('actividad', 'La actividad no tiene un id valido.').isMongoId(),
     validarCampos
-
 ], crearHorario);
 
 //Actualizar -privado-cualquiera con token válido

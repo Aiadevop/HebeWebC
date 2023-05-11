@@ -89,7 +89,7 @@ const HorarioSchema = Schema({
         ref: 'Actividad' 
     },
 
-    nombreHorario:{
+    nombreActividad:{
         type:String
     }, 
 

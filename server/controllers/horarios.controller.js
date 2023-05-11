@@ -1,15 +1,16 @@
 const { response, json } = require("express");
 const { Horario, Actividad, Usuario } = require("../models");
 const mongoose = require('mongoose');
+const { findById } = require("../models/horario");
 const { Schema } = mongoose;
 
 //obtenerHorarios - paginado - nºHorarios - metodo populate
 
 const obtenerHorarios = async (req, res = response) => {
 
-    const { limite = 5, desde = 0 } = req.query;
+    const { limite = 100, desde = 0 } = req.query;
     const cat = Horario.find({ estado: true })
-        .populate('usuario', 'nombre')
+        // .populate('usuario', 'nombre')
         .skip(Number(desde))
         .limit(Number(limite));
     const tot = Horario.countDocuments({ estado: true });
@@ -29,12 +30,27 @@ const obtenerHorarios = async (req, res = response) => {
 
 const obtenerHorario = async (req, res = response) => {
     const { id } = req.params;
-    const horario = await Horario.findById(id).populate('usuario');
+    try {
+        const horario = await Horario.findById(id);
+        const idActividad = horario.actividad.toString()
+        const actividad = await Actividad.findById(idActividad)
+        if (!actividad) {
+            res.status(200).json({
+                horario
+            })
+        }
+        console.log(actividad)
+        const nombreActividad = actividad.nombre
 
-    res.status(200).json({
-        horario
-    })
-
+        res.status(200).json({
+            horario,
+            nombreActividad
+        })
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Contacte con el administrador.' });
+    }
 }
 
 const crearHorario = async (req, res = response) => {
@@ -54,17 +70,27 @@ const crearHorario = async (req, res = response) => {
                 msg: "La sala ya está ocupada"
             })
             return;
-        }      
+        }
+        const actividadDB = await Actividad.findById(actividad)
+        const nombreActividad = actividadDB.actividad
+
         const data = {
-            dia, desde, hasta, sala, actividad
+            dia,
+            desde,
+            hasta,
+            sala,
+            actividad,
+            nombreActividad
         }
         const horario = new Horario(data)
         await horario.save(horario);
-        res.status(200).json(data);
+        res.status(200).json({
+            "Horario creado": horario
+        });
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error al agregar el usuario al horario.' });
+        res.status(500).json({ message: 'Contacte con el administrador.' });
     }
 }
 
@@ -73,17 +99,19 @@ const crearHorario = async (req, res = response) => {
 const actualizarHorario = async (req, res = response) => {
 
     const { id } = req.params;
-    const { usuario, estado, ...resto } = req.body;
+    const { estado, ...resto } = req.body;
+    try {
+        //encuentra una horario y lo actualiza
+        const horarios = await Horario.findByIdAndUpdate(id, resto, { new: true });
 
+        res.status(400).json({
+            horarios
+        })
 
-    resto.horario = resto.horario.toUpperCase();
-
-    //encuentra una horario y lo actualiza
-    const horarios = await Horario.findByIdAndUpdate(id, resto, { new: true });
-
-    res.status(400).json({
-        horarios
-    })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Contacte con el administrador.' });
+    }
 }
 
 //Añadir usuario al horario.
@@ -132,52 +160,6 @@ const añadirUsuarioAlHorario = async (req, res = response) => {
     }
 }
 
-//Añadir actividad al horario.
-
-const añadirActividadAlHorario = async (req, res = response) => {
-
-    const { id } = req.params;
-    const { actividad } = req.body;
-
-    try {
-        const horarioDB = await Horario.findById(id);
-        if (!horarioDB) {
-            res.status(400).json({
-                msg: `El horario no existe.`
-            })
-            return;
-        }
-
-        const actividadDB = await Actividad.findById(actividad)
-        if (!actividadDB) {
-            res.status(400).json({
-                msg: `El actividad no existe.`
-            })
-            return;
-        }
-
-        const actividadHorarioDB = await Horario.findOne({ '_id': id, 'actividad': actividad })
-        if (actividadHorarioDB) {
-            res.status(400).json({
-                msg: `La actividad ya esta registrado en este horario`
-            })
-            return;
-        };
-
-        //encuentra una actividad y lo actualiza
-        // const actividades = await Actividad.findByIdAndUpdate(id,usuario,{new:true});
-        horarioDB.actividad.push(actividad);
-        await horarioDB.save();
-
-        res.status(200).json({
-            horarioDB
-        })
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al agregar el usuario al horario.' });
-    }
-}
-
 //Borrar usuario de la actividad
 const borrarUsuarioDelHorario = async (req, res = response) => {
 
@@ -213,12 +195,18 @@ const borrarUsuarioDelHorario = async (req, res = response) => {
 const borrarHorario = async (req, res = response) => {
 
     const { id } = req.params;
+    try {
+        const { horario } = await Horario.findByIdAndDelete(id);
 
-    const { horario } = await Horario.findByIdAndDelete(id);
+        res.json({
+            "Horario borrado": horario
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario a la actividad.' });
+    }
 
-    res.json({
-        "Horario borrado": horario
-    })
+
 
 }
 
@@ -230,6 +218,6 @@ module.exports = {
     obtenerHorarios,
     añadirUsuarioAlHorario,
     borrarUsuarioDelHorario,
-    añadirActividadAlHorario
+
 
 }

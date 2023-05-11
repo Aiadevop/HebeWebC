@@ -8,47 +8,59 @@ const { Actividad } = require('../models');
 const usuariosGet = async (req = request, res = response) => {
 
     //muestra todos los usuarios.
-    //const usu = await Usuario.find();
+    const usu = await Usuario.find({ estado: true });
 
-    const { limite = 5, desde = 0 } = req.query;
-  
-    const usu = Usuario.find({ estado: true }) //le puedo poner condiciones
-        .skip(Number(desde))
-        .limit(Number(limite)); //hay que transformar el limite a un numero pq siempre devuelve un String si lo escribimos.
+    try {
 
-    const tot = Usuario.countDocuments({ estado: true });
+        // const { limite = 5, desde = 0 } = req.query;
 
+        // const usu = Usuario.find({ estado: true }) //le puedo poner condiciones
+        //     .skip(Number(desde))
+        //     .limit(Number(limite)); //hay que transformar el limite a un numero pq siempre devuelve un String si lo escribimos.
 
-    //metemos las dos promesas en el mismo await para que se ejecuten
-    //de manera simultanea y que no esperen la una por la otra.
-    const [total, usuarios] = await Promise.all([
-        tot,
-        usu
-    ])
+        const tot = Usuario.countDocuments({ estado: true });
 
 
-    res.status(200).json({
-        total,
-        usuarios
-    })
+        //metemos las dos promesas en el mismo await para que se ejecuten
+        //de manera simultanea y que no esperen la una por la otra.
+        const [total, usuarios] = await Promise.all([
+            tot,
+            usu
+        ])
+
+
+        res.status(200).json({
+            total,
+            usuarios
+        })
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario al horario.' });
+    }
 }
 
 const usuariosPost = async (req = request, res = response) => {
 
-    const { nombre, correo, password, rol, dni, telefono} = req.body;
-    const usuario = new Usuario({ nombre, correo, password, rol, dni, telefono});
+    const { nombre, correo, password, rol, dni, telefono } = req.body;
+    const usuario = new Usuario({ nombre, correo, password, rol, dni, telefono });
 
-    //Encriptar la contraseña
-    const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
-    usuario.password = bcryptjs.hashSync(password, salt); //encriptarlo en una sola vía.
+    try {
+        //Encriptar la contraseña
+        const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
+        usuario.password = bcryptjs.hashSync(password, salt); //encriptarlo en una sola vía.
 
-    //Guardar en la BD
-    await usuario.save(usuario);
+        //Guardar en la BD
+        await usuario.save(usuario);
 
-    res.status(200).json({
-        usuario,
-
-    });
+        res.status(200).json({
+            "Usuario creado": usuario
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario al horario.' });
+    }
 }
 
 
@@ -58,40 +70,46 @@ const usuariosPut = async (req, res = response) => {
     //params.(nombre que se puso en la ruta.)
     const { id } = req.params;
     const { _id, password, correo, ...resto } = req.body;
+    try {
 
-    //TO DO validar contra BD
-    //Si nos marcan el password es pq quieren actualizar su contraseña
-    if (password) {
-        const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
-        resto.password = bcryptjs.hashSync(password, salt);
+        //TO DO validar contra BD
+        //Si nos marcan el password es pq quieren actualizar su contraseña
+        if (password) {
+            const salt = bcryptjs.genSaltSync(10); //Que número de vueltas de seguridad se le quiere dar.
+            resto.password = bcryptjs.hashSync(password, salt);
+        }
+
+        //encuentra un usuario y lo actualiza
+        const usuario = await Usuario.findByIdAndUpdate(id, resto);
+
+        res.status(400).json({
+            "Usuario actualizado": usuario
+        })
     }
-
-    //encuentra un usuario y lo actualiza
-    const usuario = await Usuario.findByIdAndUpdate(id, resto);
-
-    res.status(400).json({
-        usuario,
-        id
-    })
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario al horario.' });
+    }
 }
 
 const usuariosDelete = async (req, res = response) => {
 
-    const { id } = req.params;  
+    const { id } = req.params;
+    try {
 
-    //EL DELETE SOLO FUNCIONA CON USUARIOS ESPECIFICOS EJEMPLO EL ADMIN.
+        //Si queremos borrarlo físicamente.
+        const usuario = await Usuario.findByIdAndDelete(id);
 
-    //Si queremos borrarlo físicamente.
-    const usuario = await Usuario.findByIdAndDelete(id);
-    
-    //Si queremos cambiar el estado a false para seguir manteniendo los datos del usuario.
-    // const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+        res.status(200).json({
 
-    res.json({
+            "Usuario borrado": usuario,
 
-        "Usuario borrado": usuario,
-
-    })
+        })
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al agregar el usuario al horario.' });
+    }
 }
 
 const usuariosPatch = (req, res = response) => {
