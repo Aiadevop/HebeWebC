@@ -12,11 +12,7 @@ const ActividadSchema = Schema({
     precio: {
         type: Number,
         default:0
-    },
-    horarioActividad:[{
-        type: Schema.Types.ObjectId,
-        ref:'Horario',
-    }]
+    }
 });
 
 ActividadSchema.methods.toJSON = function() {
