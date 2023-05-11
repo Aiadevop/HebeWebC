@@ -18,6 +18,7 @@ class Server {
             horarios:       '/api/horarios',
             actividades:    '/api/actividades',
             usuarios:       '/api/usuarios', 
+            agendas:        '/api/agendas'
             
         }
 
@@ -57,6 +58,7 @@ class Server {
         this.app.use(this.paths.horarios, require('../routes/horarios'));
         this.app.use(this.paths.actividades, require('../routes/actividades'));
         this.app.use(this.paths.usuarios, require('../routes/usuarios'));
+        this.app.use(this.paths.agendas, require('../routes/agendas'));
     }
 
     //Puerto que escucha

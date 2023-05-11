@@ -1,8 +1,9 @@
-const Horario = require ('./horario');
+const Horario = require('./horario');
 const Actividad = require('./actividad');
-const Role = require ('./role');
-const Server = require ('./server');
-const Usuario = require ('./usuario');
+const Role = require('./role');
+const Server = require('./server');
+const Usuario = require('./usuario');
+const Agenda = require('./agenda');
 
 
 
@@ -13,5 +14,6 @@ module.exports = {
     Role,
     Server,
     Usuario,
-    
+    Agenda
+
 }
