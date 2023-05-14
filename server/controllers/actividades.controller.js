@@ -87,7 +87,7 @@ const actualizarActividad = async (req, res = response) => {
         //encuentra una actividad y lo actualiza
         const actividades = await Actividad.findByIdAndUpdate(id, resto);
 
-        res.status(400).json({
+        res.status(200).json({
             "Actividad actualizada": actividades.actividad
         })
     }

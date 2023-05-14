@@ -69,7 +69,7 @@ const usuariosPut = async (req, res = response) => {
 
     //params.(nombre que se puso en la ruta.)
     const { id } = req.params;
-    const {assword, ...resto } = req.body;    
+    const {password, ...resto } = req.body;    
     try {
    
         //TO DO validar contra BD

@@ -61,7 +61,6 @@ export const Login = () => {
 
     event.preventDefault();
     try {
-      debugger
       let _datos = {
         nombre: namePutInput,
         dni: dniPutInput,
