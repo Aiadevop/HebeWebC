@@ -76,7 +76,6 @@ export function ActInicio() {
                     </NavLink>
                 </ul>
             </div>
-            <br></br>
             <div className="h1div">
                 <h1> Hebe - Club de taekwondo </h1>
             </div>

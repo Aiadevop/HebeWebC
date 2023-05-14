@@ -34,6 +34,7 @@ export const Tricking = () => {
       <div >        
           <br/>
           <h3 className='divHorario'>Horarios</h3>
+          <a href="src\ui\descargas\horariosHebe.pdf" download className='horarioH5'>Descargar horarios</a>
           <br/>
           <h3 className='divHorarioh3'>Tenemos clases de tricking de <strong>lunes a viernes</strong> de <strong>17:30-19:30 </strong> en el pabellón de Quintela.</h3>   
           <br/>

@@ -1,19 +1,19 @@
 const { response } = require("express");
 const { ObjectId } = require("mongoose").Types;
-const { Usuario, Horario, Actividad } = require('../models')
+const { Usuario, Horario, Actividad, Agenda } = require('../models')
 
 const coleccionesPermitidas = [
-    'horario',
+    'horarios',
     'actividades',
     'roles',
     'usuarios',
+    'agendas'
 ];
 
 const buscarHorario = async (termino = '', res = response) => {
     const esMongoID = ObjectId.isValid(termino);
     if (esMongoID) {
         const horario = await Horario.findById(termino)
-        console.log(horario);
         return res.status(400).json({
             results: (horario) ? [horario] : []
         })
@@ -34,9 +34,8 @@ const buscarHorario = async (termino = '', res = response) => {
 
 const buscarActividades = async (termino = '', res = response) => {
     const esMongoID = ObjectId.isValid(termino);
-    console.log(termino);
     if (esMongoID) {
-        const actividad = await actividad.findById(termino).populate('horario','nombre')
+        const actividad = await Actividad.findById(termino).populate('actividad','precio')
         console.log(actividad);
         return res.status(400).json({
             results: (actividad) ? [actividad] : []
@@ -56,6 +55,30 @@ const buscarActividades = async (termino = '', res = response) => {
 
     return res.status(400).json({
         results: (actividades) ? [actividades] : []
+    })
+
+}
+const buscarAgendas = async (termino = '', res = response) => {
+    const esMongoID = ObjectId.isValid(termino);
+    if (esMongoID) {
+        const agenda = await Agenda.findById(termino).populate('horario','usuario')
+        console.log(agenda);
+        return res.status(400).json({
+            results: (agenda) ? [agenda] : []
+        })
+    }
+
+    const regex = new RegExp(termino, 'i');
+    console.log(regex);
+    const agendas = await Agenda.find({
+        $or: [{ agenda: regex }], //¿Como hacer la búsqueda por precio??
+        $and: [{ estado: true }]
+        
+    }).populate('horario','horario').populate('usuario','nombre'); 
+
+
+    return res.status(400).json({
+        results: (agendas) ? [agendas] : []
     })
 
 }
@@ -123,10 +146,10 @@ const buscar = (req, res = response) => {
         })
     }
     switch (coleccion) {
-        case 'horario':
+        case 'horarios':
             buscarHorario(termino, res);
             break;
-        case 'actividad':
+        case 'actividades':
             buscarActividades(termino, res);
             break;
         case 'roles':
@@ -134,6 +157,9 @@ const buscar = (req, res = response) => {
             break;
         case 'usuarios':
             buscarUsuarios(termino, res);
+            break;
+        case 'agendas':
+            buscarAgendas(termino, res);
             break;
         default:
             res.status(500).json({

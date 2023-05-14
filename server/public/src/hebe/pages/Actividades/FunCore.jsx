@@ -32,6 +32,7 @@ export const FunCore = () => {
       <div >
         <br />
         <h3 className='divHorario'>Horarios</h3>
+        <a href="src\ui\descargas\horariosHebe.pdf" download className='horarioH5'>Descargar horarios</a>
         <br />
         <h3 className='divHorarioh3'>Tenemos clases de funcore todos los <strong>lunes</strong> y <strong>miércoles</strong> de <strong>9:30-10:30 </strong>y de <strong>21:30 a 22:30</strong> en el club Hebe</h3>
         <br />

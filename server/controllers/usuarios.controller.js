@@ -69,9 +69,9 @@ const usuariosPut = async (req, res = response) => {
 
     //params.(nombre que se puso en la ruta.)
     const { id } = req.params;
-    const { _id, password, correo, ...resto } = req.body;
+    const {assword, ...resto } = req.body;    
     try {
-
+   
         //TO DO validar contra BD
         //Si nos marcan el password es pq quieren actualizar su contraseña
         if (password) {
@@ -82,7 +82,7 @@ const usuariosPut = async (req, res = response) => {
         //encuentra un usuario y lo actualiza
         const usuario = await Usuario.findByIdAndUpdate(id, resto);
 
-        res.status(400).json({
+        res.status(200).json({
             "Usuario actualizado": usuario
         })
     }

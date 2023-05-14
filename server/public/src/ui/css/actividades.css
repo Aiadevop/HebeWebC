@@ -79,6 +79,14 @@
     font-weight: 700;
 }
 
+.horarioH5{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: small;
+    text-decoration: underline;
+
+}
+
 .quintela{
     margin-top: 6%;
 }

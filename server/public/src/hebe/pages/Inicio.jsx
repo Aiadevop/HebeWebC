@@ -8,7 +8,6 @@ export const Inicio = () => {
   return (
     <>
       <Slide/>
-      <Cartel/>
       <br/>
       <ActInicio />
       <QuienSomos />
