@@ -18,7 +18,7 @@ export const MostrarUsuarios = () => {
         });   
   
         const data = await response.json();
-        // console.log(data.usuarios)
+    
         if (response.status !== 200) {
           throw data.error || new Error(`Request failed with status ${response.status}`);
         }
@@ -30,19 +30,6 @@ export const MostrarUsuarios = () => {
         alert(error.message);
       }
     }
-
-    // console.log(users)
-
-    // const getUsers = async () => {
-    //     const { data } = await (axios.get('http://localhost:8080/api/usuarios?limite=100'))
-    //     const usuarios = data.usuarios
-    //     setUsers(usuarios)
-    //     return usuarios;
-    // }
-
-    // useEffect(() => {
-    //     getUsers()
-    // }, [])
 
     return (
         <>

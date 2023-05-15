@@ -21,7 +21,7 @@ export const GetSchedule = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+   
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }

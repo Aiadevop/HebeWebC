@@ -115,7 +115,7 @@ export const AdminLogin = () => {
           </li>
           <li className='adminLi'>
             <NavLink className="boton" to="/DeleteUsertoDiary">
-              <button className='botonAdmin'>Borrar usuario de la agenda</button>
+              <button className='botonAdmin'>Dar de baja al usuario en la agenda</button>
             </NavLink>
           </li>
         </ul>

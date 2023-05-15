@@ -21,10 +21,10 @@ export const GetActivity = () => {
         }
       });
 
-      console.log(response)
+
 
       const data = await response.json();
-      // console.log(data.act)
+
 
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);

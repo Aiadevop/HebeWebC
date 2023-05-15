@@ -70,7 +70,7 @@ const borrarUsuarioDelHorario = async (req, res = response) => {
 
         const usuarioAgendaDB = await Agenda.findByIdAndDelete(existeEnLaAgenda._id);
         res.status(200).json({
-            "Agenda borrada" :usuarioAgendaDB
+            "Usuario borrado del horario" :usuarioAgendaDB
         })
     } catch (error) {
         console.error(error);

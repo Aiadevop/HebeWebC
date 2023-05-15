@@ -9,7 +9,7 @@ export const Usuarios = () => {
       .then(response => response.json())
       // .then((data) => { setData(data.total), console.log(data) });
       // .then((data) => { setData(data.usuarios[0].nombre), console.log(data) });
-      .then((data) => { setData(JSON.stringify({ data})), console.log(data) });
+      .then((data) => { setData(JSON.stringify({ data})) });
   }, [])
 
   return (

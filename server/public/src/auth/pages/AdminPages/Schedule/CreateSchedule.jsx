@@ -31,7 +31,7 @@ export const CreateSchedule = () => {
       });
 
       const dataUser = await response.json();
-      console.log(dataUser)
+  
       if (response.status !== 200) {
         throw dataUser.error || new Error(`Request failed with status ${response.status}`);
       }

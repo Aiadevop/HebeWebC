@@ -34,10 +34,10 @@ export const UpdateActivity = () => {
         }
 
       });
-      console.log(_datos)
+  
 
       const dataActivityPut = await response.json();
-      console.log(dataActivityPut)
+
       if (response.status !== 200) {
         throw dataActivityPut.error || new Error(`Request failed with status ${response.status}`);
       }

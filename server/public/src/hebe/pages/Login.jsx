@@ -43,7 +43,7 @@ export const Login = () => {
       });
 
       const dataUser = await response.json();
-      // console.log(dataUser.usuario)
+     
       if (response.status !== 200) {
         throw dataUser.error || new Error(`Request failed with status ${response.status}`);
       }
@@ -80,7 +80,7 @@ export const Login = () => {
       });
 
       const dataUserPut = await response.json();
-      // console.log(dataUserPut.usuario)
+
       if (response.status !== 200) {
         throw dataUserPut.error || new Error(`Request failed with status ${response.status}`);
       }
@@ -107,7 +107,7 @@ export const Login = () => {
       });
 
       const data = await response.json();
-      // console.log(data.usuarios)
+  
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }

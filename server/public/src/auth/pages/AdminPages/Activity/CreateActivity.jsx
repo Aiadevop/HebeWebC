@@ -26,7 +26,7 @@ export const CreateActivity = () => {
       });
 
       const dataUser = await response.json();
-      // console.log(dataUser.usuario)
+  
       if (response.status !== 200) {
         throw dataUser.error || new Error(`Request failed with status ${response.status}`);
       }

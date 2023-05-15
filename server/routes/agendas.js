@@ -2,8 +2,8 @@ const { Router, response } = require('express');
 const { check } = require('express-validator');
 const { 
     añadirUsuarioAlaAgenda,
-    borrarUsuarioDelaAgenda, 
-    borrarUsuarioDelHorario
+    borrarUsuarioDelHorario,
+    borrarUsuarioDelaAgenda 
      } = require('../controllers/agendas.controller');
 
 const {
