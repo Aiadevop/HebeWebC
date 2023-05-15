@@ -104,7 +104,7 @@ const actualizarHorario = async (req, res = response) => {
         //encuentra una horario y lo actualiza
         const horarios = await Horario.findByIdAndUpdate(id, resto, { new: true });
 
-        res.status(400).json({
+        res.status(200).json({
             horarios
         })
 
