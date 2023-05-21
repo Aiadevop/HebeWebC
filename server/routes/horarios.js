@@ -21,19 +21,19 @@ const router = Router();
 //{{url}}/api/Horarios
 
 //Obtener todas las Horarios-publico
-router.get('/', [
+router.get('/auth/', [
     
 ],obtenerHorarios);
 
 //Obtener una Horario por id - publico.
-router.get('/:id', [
+router.get('/auth/:id', [
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeHorario),
     validarCampos
 ],obtenerHorario);
 
 //Crear horario - privado con cualquier persona con token valido.
-router.post('/', [
+router.post('/auth/', [
     // validarJWT,
     check('dia', 'El dia es obligatorio.').not().isEmpty(),
     check('desde', 'El desde es obligatorio.').not().isEmpty(),
@@ -45,14 +45,14 @@ router.post('/', [
 ], crearHorario);
 
 //Actualizar -privado-cualquiera con token válido
-router.put('/:id',[
+router.put('/auth/:id',[
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeHorario),
     validarCampos
 ],actualizarHorario);
 
 //Borrar Horario - Admin
-router.delete('/:id', [
+router.delete('/auth/:id', [
     // validarJWT,   
     // tieneRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un id válido').isMongoId(),

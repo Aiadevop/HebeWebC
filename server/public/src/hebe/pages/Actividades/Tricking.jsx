@@ -16,13 +16,13 @@ export const Tricking = () => {
           
           </p>
         </div>
-        <img className='taekwondoImg tricking' src='../../src/ui/img/triking.png'></img>
+        <img className='taekwondoImg tricking' src='../../src/ui/img/trikingweb.png'></img>
       </div>
 
       <div className='taekwondoContainerMovil'>
       <h1 className='taeh1 movil'>Tricking Hebe Moaña</h1>
 
-        <img className='taekwondoImgx' src='../../src/ui/img/triking.png'></img>
+        <img className='taekwondoImgx' src='../../src/ui/img/trikingweb.png'></img>
         <div className='taekwondo'>
    
           <p>

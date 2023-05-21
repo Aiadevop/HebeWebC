@@ -21,19 +21,19 @@ const router = Router();
 //{{url}}/api/Actividades
 
 //Obtener todas las Actividades-publico
-router.get('/', [
+router.get('/auth/', [
     
 ],obtenerActividades);
 
 //Obtener una Actividad por id - publico.
-router.get('/:id', [
+router.get('/auth/:id', [
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeActividad),
     validarCampos
 ],obtenerActividad);
 
 //Crear Actividad - privado con cualquier persona con token valido.
-router.post('/', [
+router.post('/auth/', [
     // validarJWT,
     check('actividad', 'El nombre de la actividad es obligatorio.').not().isEmpty(),
     // validarHorario,
@@ -42,14 +42,14 @@ router.post('/', [
 ], crearActividad);
 
 //Actualizar -privado-cualquiera con token válido
-router.put('/:id',[
+router.put('/auth/:id',[
     check('id', 'No es un id válido').isMongoId(),
     check ('id').custom(existeActividad),
     validarCampos
 ],actualizarActividad);
 
 //Borrar Actividad - Admin
-router.delete('/:id', [
+router.delete('/auth/:id', [
     // validarJWT,   
     // tieneRole('ADMIN_ROLE', 'USER_ROLE'),
     check('id', 'No es un id válido').isMongoId(),

@@ -65,7 +65,7 @@ export const Nav = () => {
                             </li>
                             <br></br>
                                       <li className='nav-menu-item carrologin'>
-                                <NavLink className="" to="/adminpanel">
+                                <NavLink className="" to="/login">
                                     <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="login" alt="Login" /></button>
                                 </NavLink>
                             </li>

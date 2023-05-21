@@ -20,20 +20,20 @@ const router = Router();
 // ],obtenerHorarios);
 
 //Añadir usuario al horario
-router.post('/agenda/:id',[
+router.post('/auth/agenda/:id',[
     check('id', 'No es un id válido').isMongoId(),
     validarCampos
 ],añadirUsuarioAlaAgenda);
 
 
 //Borrar usuario de la actividad
-router.delete('/agenda/:id',[
+router.delete('/auth/agenda/:id',[
     check('id', 'No es un id válido').isMongoId(),
     validarCampos
 ],borrarUsuarioDelHorario)
 
 //Borrar usuario de la actividad
-router.delete('/agenda/',[
+router.delete('/auth/agenda/',[
     check('usuario', 'No es un id válido').isMongoId(),
     validarCampos
 ],borrarUsuarioDelaAgenda)

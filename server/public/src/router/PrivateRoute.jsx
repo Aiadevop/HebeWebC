@@ -1,45 +1,65 @@
-//Tiene un children pq es un high order component
-
-import { useContext } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
-import { AuthContext } from "../auth/context/AuthContext";
-
+import { Navigate } from "react-router-dom"
 
 export const PrivateRoute = ({ children }) => {
+    debugger
+    let token = sessionStorage.getItem('token')
+    console.log(token)
 
-    const navigate = useNavigate();
-    const { logged } = useContext(AuthContext)
-
-    // const location = useLocation();
-    // console.log(location);
-
-    const { pathname, search } = useLocation();
-    
-    const lastPath = pathname + search;
-    localStorage.setItem('lastPath', lastPath );
-
-    const onLogIn = () => {
-        navigate('/clientesPrivate', {
-            replace: true
-        })
+    if (token) {
+        return children
     }
+    else {
 
-    return (logged)
-        ? children
-        :
-        <>
-            {/* <Navigate to="/login" /> */}
-            <div className="container">             
-                <br/>
-                <div>Introduzca sus datos para ver el contenido</div>
-                <br/>
-                <button
-
-                    onClick={onLogIn}
-                >Login
-                </button>
-            </div>
-        </>
-
-
+        <Navigate to="/inicio" />
+    }
 }
+
+
+// export const PrivateRoute = ({ children }) => {
+//     debugger
+
+//     // const navigate = useNavigate();
+//     // const { logged } = useContext(AuthContext)
+
+//     // const location = useLocation();
+//     // console.log(location);
+
+//     // const { pathname, search } = useLocation();
+
+//     // const lastPath = pathname + search;
+//     // sessionStorage.setItem('lastPath', lastPath);
+//     const [logged, setLogged] = useState(false)
+//     const [admin, setAdmin] = useState(false)
+
+//     let token = sessionStorage.getItem('token')
+//     console.log(token)
+//     let rol = sessionStorage.getItem('rol')
+//     console.log(rol)
+
+//     if (token && rol) {
+
+//         if (rol.includes("ADMIN_ROLE")) {
+//             setLogged(!logged)
+//             setAdmin(!admin)
+//             console.log(logged)
+//             return children
+//             // <Navigate to="/auth/adminpanel" />
+//         } else {
+//             if (rol.includes("USER_ROLE")) {
+//                 setLogged(!logged)
+//                 console.log(logged)
+//                 return children
+//                 // <Navigate to="/auth/userpanel" />
+//             } else {
+//                 <Navigate to="/inicio" />
+//             }
+
+//         }
+//     }
+
+
+//     <Navigate to="/inicio" />
+
+// }
+
+

@@ -22,11 +22,11 @@ const {
 
 const router = Router();
 
-router.get('/', usuariosGet);
+router.get('/auth/', usuariosGet);
 
 //Nuevos recursos: ej. usuario creado
 //si router.post{opc1(ruta,controlador) / opc2(ruta,middleware,controlador)}
-router.post('/', [
+router.post('/auth/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('telefono', 'El telefono es obligatorio').not().isEmpty(),
     check('dni', 'El dni es obligatorio').not().isEmpty(),
@@ -38,7 +38,7 @@ router.post('/', [
 ], usuariosPost);
 
 //Actualizar DATA: ej. datos actualizados
-router.put('/:id', [
+router.put('/auth/:id', [
         //middlewares
         check('id', 'No es un id válido').isMongoId(),
         check('id').custom(idExiste), 
@@ -49,7 +49,7 @@ router.put('/:id', [
 
 
 //Borra algo
-router.delete('/:id', [
+router.delete('/auth/:id', [
     // validarJWT,
     //esAdminRole, (esto solo vale para AdminRole si queremos + variables distinto middleware, el de abajo.)
     // tieneRole('ADMIN_ROLE', 'USER_ROLE'),

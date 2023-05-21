@@ -14,13 +14,13 @@ export const Taekwondo = () => {
             <strong>¡Descubre los beneficios del taekwondo en Hebe!</strong> En nuestro club de taekwondo en Moaña, aprenderás <strong>técnicas de defensa personal, mejorarás tu forma física y desarrollarás habilidades sociales</strong>. Nuestros instructores altamente cualificados se enfocan en desarrollar tu confianza y autocontrol, mientras mejoran tu coordinación, equilibrio y flexibilidad. A través de nuestras clases divertidas y desafiantes, tanto niños como adultos pueden disfrutar de los beneficios del taekwondo en un ambiente acogedor y motivador. ¡Únete a nosotros ahora y comienza a mejorar tu vida!
           </p>
         </div>
-        <img className='taekwondoImg' src='../../src/ui/img/taekwondoCutPC.png'></img>
+        <img className='taekwondoImg' src='../../src/ui/img/taekwondoweb.png'></img>
       </div>
 
       <div className='taekwondoContainerMovil'>
       <h1 className='taeh1 movil'>Taekwondo Hebe Moaña</h1>
       <br/>
-        <img className='taekwondoImgx ' src='../../src/ui/img/taekwondoCut.png'></img>
+        <img className='taekwondoImgx ' src='../../src/ui/img/taekwondoweb.png'></img>
         <div className='taekwondo'>
 
 

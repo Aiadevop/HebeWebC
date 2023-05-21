@@ -15,13 +15,13 @@ export const FunCore = () => {
 
           </p>
         </div>
-        <img className='taekwondoImg funcore' src='../../src/ui/img/funcore.jpg'></img>
+        <img className='taekwondoImg funcore' src='../../src/ui/img/funcoreweb.png'></img>
       </div>
 
       <div className='taekwondoContainerMovil'>
       <h1 className='taeh1 movil'>Funcore Hebe Moaña</h1>
           <br/>
-        <img className='taekwondoImgx' src='../../src/ui/img/funcore.jpg'></img>
+        <img className='taekwondoImgx' src='../../src/ui/img/funcoreweb.png'></img>
         <div className='taekwondo'>
           <p>
             ¡Descubre la mejor combinación de <strong>CrossFit y trabajo del core en Hebe</strong> con nuestro entrenamiento Funcore! En nuestra escuela de Funcore en Moaña, <strong>mejorarás tu fuerza, resistencia, equilibrio y flexibilidad,</strong> mientras trabajas en tu núcleo y quemas calorías. Nuestros instructores altamente cualificados se enfocan en desafiarte a través de rutinas que combinan levantamiento de pesas, entrenamiento cardiovascular y movimientos funcionales, mientras te ayudan a mejorar tu técnica y a alcanzar tus objetivos de acondicionamiento físico. A través de nuestras clases dinámicas y personalizadas, tanto los principiantes como los atletas experimentados pueden disfrutar de los beneficios del Funcore en un <strong>ambiente motivador y divertido. </strong>¡Únete a nosotros ahora y comienza a transformar tu cuerpo y mente!
