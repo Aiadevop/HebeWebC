@@ -3,7 +3,7 @@ const { ObjectId } = require("mongoose").Types;
 const { Usuario, Horario, Actividad, Agenda } = require('../models')
 
 const coleccionesPermitidas = [
-    'horarios',
+,
     'actividades',
     'roles',
     'usuarios',
@@ -421,7 +421,22 @@ const buscarUsuarios = async (termino = '', res = response) => {
 
 }
 
-const buscar = (req, res = response) => {
+const buscar = (req=request, res = response) => {
+    const coleccionPermitida ='horarios'
+
+    const { coleccion } = req.params;
+    if (!coleccionPermitida.includes(coleccion)) {
+        res.status(400).json({
+            message: `Las coleccion permitida es: ${coleccionPermitida}`,
+        })
+    }
+    switch (coleccion) {
+        case 'horarios':
+            buscarHorario(req, res);
+            break;  
+    }
+}
+const buscarResto = (req, res = response) => {
 
     const { coleccion, termino } = req.params;
     if (!coleccionesPermitidas.includes(coleccion)) {
@@ -430,22 +445,19 @@ const buscar = (req, res = response) => {
         })
     }
     switch (coleccion) {
-        case 'horarios':
-            buscarHorario(req, res);
+        case 'actividades':
+            buscarActividades(termino, res);
             break;
-        // case 'actividades':
-        //     buscarActividades(termino, res);
-        //     break;
-        // case 'roles':
-        //     buscarRoles(termino, res)
-        //     break;
-        // case 'usuarios':
-        //     buscarUsuarios(termino, res);
-        //     break;
-        // case 'agendas':
-        //     buscarAgendas(termino, res);
-        //     break;
-        // default:
+        case 'roles':
+            buscarRoles(termino, res)
+            break;
+        case 'usuarios':
+            buscarUsuarios(termino, res);
+            break;
+        case 'agendas':
+            buscarAgendas(termino, res);
+            break;
+        default:
             res.status(500).json({
                 message: `Se me olvidó hacer la búsqueda `,
             })
@@ -458,5 +470,6 @@ module.exports = {
     buscarActividades,
     buscarRoles,
     buscarUsuarios,
+    buscarResto
 
 }

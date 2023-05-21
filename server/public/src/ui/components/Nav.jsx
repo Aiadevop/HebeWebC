@@ -64,22 +64,7 @@ export const Nav = () => {
                                 <NavLink className="nav-menu-link nav-link" to="/tricking" onClick={() => setMenuOpened(!menuOpened)}>Tricking</NavLink>
                             </li>
                             <br></br>
-                          
-                            {/* <li className='nav-menu-item ne'>
-                                <img src="../src/ui/iconos/kimono.png" className="logoHebe" alt="Comprar productos" />
-                                <NavLink className="nav-menu-link nav-link" to="/productos" onClick={() => setMenuOpened(!menuOpened)}>Productos</NavLink>
-                            </li> */}
-                            {/* <li className='nav-menu-item ne'>
-                                <img src="../src/ui/iconos/llamada.png" className="logoHebe llamada" alt="Contactar" />
-                                <NavLink className="nav-menu-link nav-link" to="/pilates" onClick={() => setMenuOpened(!menuOpened)}>Contacto</NavLink>
-                            </li> */}
-{/* 
-                            <li className='nav-menu-item carrologin ne'>
-                                <NavLink className="nav-menu-link nav-link carro" to="/carrito">
-                                    <img src="../src/ui/iconos/carro1.png" className="logoHebe login" alt="Carro Compra" />
-                                </NavLink>
-                            </li> */}
-                            <li className='nav-menu-item carrologin'>
+                                      <li className='nav-menu-item carrologin'>
                                 <NavLink className="" to="/adminpanel">
                                     <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="login" alt="Login" /></button>
                                 </NavLink>
@@ -96,7 +81,7 @@ export const Nav = () => {
                             </NavLink>
                         </li> */}
                         <li className='nav-menu-item ne'>
-                            <NavLink className="" to="/adminpanel">
+                            <NavLink className="" to="/login">
                                 <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="logoHebe" alt="Login" /></button>
                             </NavLink>
                         </li>

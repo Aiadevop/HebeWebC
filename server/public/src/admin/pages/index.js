@@ -1,2 +1,2 @@
 export * from './AdminPanel';
-export * from './Usuarios';
+export * from './UserPanel';

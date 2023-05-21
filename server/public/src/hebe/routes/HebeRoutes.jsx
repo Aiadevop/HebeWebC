@@ -5,6 +5,8 @@ import { Nav } from "../../ui"
 import { Atribuciones } from "../pages/Atribuciones.jsx"
 import { Login } from "../../auth/pages/Login.jsx"
 import { AdminPanel } from "../../admin/pages/AdminPanel.jsx"
+import { Registration } from "../../auth/pages/Registration.jsx"
+import { UserPanel } from "../../admin/pages/UserPanel.jsx"
 
 
 
@@ -28,8 +30,10 @@ export const HebeRoutes = () => {
         <Route path="pilates" element={<Pilates />}></Route>
         <Route path="taekwondo" element={<Taekwondo />}></Route>
         <Route path="login" element={<Login />}></Route>
+        <Route path="registration" element={<Registration />}></Route>
         {/* Estas rutas deberan ser privadas        */}        
         <Route path="adminpanel" element={<AdminPanel />}></Route>
+        <Route path="userpanel" element={<UserPanel />}></Route>
         {/* Rutas user */}
         <Route path="getUser" element={<GetUser />}></Route>
         <Route path="createUser" element={<CreateUser />}></Route>
