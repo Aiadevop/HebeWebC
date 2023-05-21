@@ -36,17 +36,17 @@ export const UpdateActivity = () => {
       });
   
 
-      const dataActivityPut = await response.json();
+      const data = await response.json();
 
       if (response.status !== 200) {
-        throw dataActivityPut.error || new Error(`Request failed with status ${response.status}`);
+        throw data.error || new Error(`${response.message}`);
       }
       alert(`Actividad ${actividadPutInput} actualizada`)
 
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("Introduce un id válido");
     }
   }
 

@@ -60,14 +60,17 @@ const crearHorario = async (req, res = response) => {
     try {
         if (!dia || !desde || !hasta || !sala) {
             res.status(400).json({
-                msg: "Faltan campos por rellenar"
+                message: "Faltan campos por rellenar"
             })
-        }
+        }      
+
+     
         const horarioDB = await Horario.findOne({ dia, desde, hasta, sala })
 
         if (horarioDB) {
+            console.log('ocupada')
             res.status(400).json({
-                msg: "La sala ya está ocupada"
+                message: "La sala ya está ocupada"
             })
             return;
         }
@@ -82,7 +85,9 @@ const crearHorario = async (req, res = response) => {
             actividad,
             nombreActividad
         }
+        console.log(data)
         const horario = new Horario(data)
+        console.log(horario)
         await horario.save(horario);
         res.status(200).json({
             "Horario creado": horario
@@ -125,7 +130,7 @@ const añadirUsuarioAlHorario = async (req, res = response) => {
         const horarioDB = await Horario.findById(id);
         if (!horarioDB) {
             res.status(400).json({
-                msg: `El horario no existe.`
+                message: `El horario no existe.`
             })
             return;
         }
@@ -133,7 +138,7 @@ const añadirUsuarioAlHorario = async (req, res = response) => {
         const usuarioDB = await Usuario.findById(usuario)
         if (!usuarioDB) {
             res.status(400).json({
-                msg: `El usuario no existe.`
+                message: `El usuario no existe.`
             })
             return;
         }
@@ -141,7 +146,7 @@ const añadirUsuarioAlHorario = async (req, res = response) => {
         const usuarioHorarioDB = await Horario.findOne({ '_id': id, 'usuario': usuario })
         if (usuarioHorarioDB) {
             res.status(400).json({
-                msg: `El usuario ya esta registrado en este horario`
+                message: `El usuario ya esta registrado en este horario`
             })
             return;
         };
@@ -170,7 +175,7 @@ const borrarUsuarioDelHorario = async (req, res = response) => {
         const actividadDB = await Actividad.findById(id);
         if (!actividadDB.usuario.includes(usuario)) {
             res.status(400).json({
-                msg: `El usuario no esta registrado en esta actividad`
+                message: `El usuario no esta registrado en esta actividad`
             })
             return
         };

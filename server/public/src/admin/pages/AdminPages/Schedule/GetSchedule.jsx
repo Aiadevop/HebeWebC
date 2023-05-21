@@ -23,14 +23,14 @@ export const GetSchedule = () => {
       const data = await response.json();
    
       if (response.status !== 200) {
-        throw data.error || new Error(`Request failed with status ${response.status}`);
+        throw data.error || new Error(`${response.message}`);
       }
       setSchedule(data.horarios);
 
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se han podido mostrar los horarios");
     }
   }
 

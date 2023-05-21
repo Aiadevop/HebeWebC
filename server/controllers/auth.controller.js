@@ -7,23 +7,23 @@ const { generarJWT } = require('../helpers/generarJWT');
 
 const login = async(req, res = response) => {
 
-    const { correo, password } = req.body;
+    const { correo, password } = req.body;    
 
     try {
 
         // Verificar si el email existe
-        const usuario = await Usuario.findOne({ correo });
+        const usuario = await Usuario.findOne({ correo });  
 
         if (!usuario) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - correo'
+                message: 'Usuario / Password no son correctos - correo'
             });
         }
 
         // SI el usuario está activo
         if (usuario.estado === false) { //!usuario.estado
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - estado: false'
+                message: 'Usuario / Password no son correctos - estado: false'
             });
         }
 
@@ -31,7 +31,7 @@ const login = async(req, res = response) => {
         const contraseñaValida = bcryptjs.compareSync(password, usuario.password)
         if (!contraseñaValida) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - contraseña'
+                message: 'Usuario / Password no son correctos - contraseña'
             });
         }
 
@@ -39,7 +39,7 @@ const login = async(req, res = response) => {
         const token = await generarJWT(usuario.id);
 
         res.status(200).json({
-            msg: 'Login ok',
+            message: 'Login ok',
             usuario,
             token
         });
@@ -48,7 +48,7 @@ const login = async(req, res = response) => {
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            msg: 'Hable con el administrador'
+            message: 'Hable con el administrador'
         });
     }
 

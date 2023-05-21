@@ -5,7 +5,7 @@ export const  CreateUser= () => {
   const [users, setUsers] = useState([])
   const [nameInput, setNameInput] = useState('');
   const [dniInput, setDniInput] = useState('');
-  const [telefonoInput, setTelefonoInput] = useState();
+  const [telefonoInput, setTelefonoInput] = useState('');
   const [correoInput, setCorreoInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [actividadInput, setActividadInput] = useState([]);
@@ -33,17 +33,18 @@ export const  CreateUser= () => {
 
       });
 
-      const dataUser = await response.json();
+      const data = await response.json();
   
       if (response.status !== 200) {
-        throw dataUser.error || new Error(`Request failed with status ${response.status}`);
+        console.log(response)
+        throw data.error || new Error(`${response.message}`);
       }
       alert(`Usuario ${nameInput} creado`)
 
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se ha podido crear el usuario.");
     }
   }
 

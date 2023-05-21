@@ -2,18 +2,23 @@ import { useState } from 'react';
 
 export const CreateActivity = () => {
 
-  const [actividadInput, setActividadInput] = useState();
-  const [precioInput, setPrecioInput] = useState();
+  const [actividadInput, setActividadInput] = useState('');
+  const [precioInput, setPrecioInput] = useState(0);
   const url = 'http://localhost:8080/'
 
   //Función crearUsuario
   async function onSubmitCreateActivity(event) {
-
+    debugger
     event.preventDefault();
     try {
-      let _datos = {   
-        actividad:actividadInput,
-        precio:precioInput 
+      let _datos = {
+        actividad: actividadInput,
+        precio: precioInput
+      }
+
+      if (precioInput === 0) {
+        alert("La actividad no puede ser gratuita")
+        return;
       }
 
       const response = await fetch(`${url}api/actividades`, {
@@ -25,17 +30,16 @@ export const CreateActivity = () => {
 
       });
 
-      const dataUser = await response.json();
-  
+      const data = await response.json();
       if (response.status !== 200) {
-        throw dataUser.error || new Error(`Request failed with status ${response.status}`);
+        throw data.error || new Error(`${data.message}`);
       }
       alert(`Actividad ${actividadInput} creada`)
 
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se podido crear la actividad");
     }
   }
 
@@ -44,10 +48,10 @@ export const CreateActivity = () => {
   return (
     <>
       <br />
-      <form  className='formAdmin' onSubmit={onSubmitCreateActivity} >
-      <h1>Nueva Actividad</h1>
-      <br/>
-          
+      <form className='formAdmin' onSubmit={onSubmitCreateActivity} >
+        <h1>Nueva Actividad</h1>
+        <br />
+
         <label>Nombre Actividad </label>
         <input
           type="text"
@@ -56,7 +60,7 @@ export const CreateActivity = () => {
           value={actividadInput}
           onChange={(e) => setActividadInput(e.target.value)}
         />
-        <br />       
+        <br />
         <label>Precio </label>
         <input
           type="text"
@@ -65,7 +69,7 @@ export const CreateActivity = () => {
           value={precioInput}
           onChange={(e) => setPrecioInput(e.target.value)}
         />
- 
+
         <input className='botonForm' type="submit" value="Crear actividad" />
 
 

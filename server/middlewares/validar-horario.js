@@ -7,7 +7,7 @@ const validarHorario = async(req = request, res = response, next) => {
     const {horario} = req.body;
     if (!horario) {
         return res.status(401).json({
-            msg: 'Cree primero el horario'
+            message: 'Cree primero el horario'
         });
     }
 
@@ -17,7 +17,7 @@ const validarHorario = async(req = request, res = response, next) => {
 
         if (!horariox) {
             return res.status(401).json({
-                msg: 'Id de horario no existe'
+                message: 'Id de horario no existe'
             })
         }
 
@@ -28,7 +28,7 @@ const validarHorario = async(req = request, res = response, next) => {
 
         console.log(error);
         res.status(401).json({
-            msg: 'Error de horario'
+            message: 'Error de horario'
         })
         return;
     }

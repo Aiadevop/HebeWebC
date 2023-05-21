@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/context/AuthContext';
+
 import '../css/nav.css'
 
 
@@ -54,13 +55,13 @@ export const Nav = () => {
                                 <NavLink className="nav-menu-link nav-link" to="/taekwondo" onClick={() => setMenuOpened(!menuOpened)}>Taekwondo</NavLink>
                             </li>
                             <li className='nav-menu-item ho'>
+                                <NavLink className="nav-menu-link nav-link" to="/pilates" onClick={() => setMenuOpened(!menuOpened)}>Pilates</NavLink>
+                            </li>
+                            <li className='nav-menu-item ho'>
                                 <NavLink className="nav-menu-link nav-link" to="/funcore" onClick={() => setMenuOpened(!menuOpened)}>FunCore</NavLink>
                             </li>
                             <li className='nav-menu-item ho'>
                                 <NavLink className="nav-menu-link nav-link" to="/tricking" onClick={() => setMenuOpened(!menuOpened)}>Tricking</NavLink>
-                            </li>
-                            <li className='nav-menu-item ho'>
-                                <NavLink className="nav-menu-link nav-link" to="/pilates" onClick={() => setMenuOpened(!menuOpened)}>Pilates</NavLink>
                             </li>
                             <br></br>
                           
@@ -79,7 +80,7 @@ export const Nav = () => {
                                 </NavLink>
                             </li> */}
                             <li className='nav-menu-item carrologin'>
-                                <NavLink className="" to="/adminlogin">
+                                <NavLink className="" to="/adminpanel">
                                     <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="login" alt="Login" /></button>
                                 </NavLink>
                             </li>
@@ -95,7 +96,7 @@ export const Nav = () => {
                             </NavLink>
                         </li> */}
                         <li className='nav-menu-item ne'>
-                            <NavLink className="" to="/adminlogin">
+                            <NavLink className="" to="/adminpanel">
                                 <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="logoHebe" alt="Login" /></button>
                             </NavLink>
                         </li>

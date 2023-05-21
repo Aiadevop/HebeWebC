@@ -3,12 +3,12 @@ import '../../../../ui/css/admin.css'
 
 export const GetActivity = () => {
 
-  //Mostrar usuarios
+  //Mostrar actividades
   const [actividad, setActividad] = useState([])
   const url = 'http://localhost:8080/'
 
 
-  //Función obtener usuarios.
+  //Función obtener actividades.
   async function onSubmitGetActividad(event) {
 
     event.preventDefault();
@@ -27,14 +27,14 @@ export const GetActivity = () => {
 
 
       if (response.status !== 200) {
-        throw data.error || new Error(`Request failed with status ${response.status}`);
+        throw data.error || new Error(`Request failed with status ${data.message}`);
       }
       setActividad(data.act);
 
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se han podido obtener las actividades");
     }
   }
 

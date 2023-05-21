@@ -27,7 +27,7 @@ const obtenerActividad = async (req, res = response) => {
         const actividad = await Actividad.findById(id);
         if (!actividad) {
             res.status(400).json({
-                msg: `El id de esta actividad no existe.`
+                message: `El id de esta actividad no existe.`
             })
             return;
         }
@@ -52,7 +52,7 @@ const crearActividad = async (req, res = response) => {
 
         if (actividadDB) {
             res.status(400).json({
-                msg: `La actividad ya existe en la BD`
+                message: `La actividad ya existe en la BD`
             })
             return
         };

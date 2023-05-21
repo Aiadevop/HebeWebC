@@ -6,7 +6,7 @@ export const UpdateUser = () => {
   const [idInput, setIdInput] = useState('');
   const [namePutInput, setNamePutInput] = useState('');
   const [dniPutInput, setDniPutInput] = useState('');
-  const [telefonoPutInput, setTelefonoPutInput] = useState();
+  const [telefonoPutInput, setTelefonoPutInput] = useState('');
   const [correoPutInput, setCorreoPutInput] = useState('');
   const [passwordPutInput, setPasswordPutInput] = useState('');
   const [menuOpened, setMenuOpened] = useState(false);
@@ -18,6 +18,10 @@ export const UpdateUser = () => {
     event.preventDefault();
     try {
 
+      if (!idInput) {
+        alert("Es obligatorio introducir el id del usuario")
+        return;
+      }
       let _datos = {
         rol: "USER_ROLE"
       }
@@ -25,7 +29,7 @@ export const UpdateUser = () => {
       if (namePutInput !== "" || undefined) {
         _datos.nombre = namePutInput;
       }
-      
+
       if (dniPutInput !== "" || undefined) {
         _datos.dni = dniPutInput;
       }
@@ -51,16 +55,15 @@ export const UpdateUser = () => {
 
       });
 
-      const dataUserPut = await response.json();
+      const data = await response.json();
       if (response.status !== 200) {
-        throw dataUserPut.error || new Error(`Request failed with status ${response.status}`);
+        throw data.error || new Error(`${response.message}`);
       }
       alert(`Usuario ${nameInput} actualizado`)
 
     } catch (error) {
-      // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se ha podido actualizar el usuario.");
     }
   }
 
@@ -71,7 +74,7 @@ export const UpdateUser = () => {
       <br />
       <form className='formAdmin' onSubmit={onSubmitUpdateUser} >
         <h1>Actualizar Registro</h1>
-        <br/>
+        <br />
         <label>Id usuario </label>
         <input
           type="text"

@@ -14,7 +14,7 @@ const añadirUsuarioAlaAgenda= async (req, res = response) => {
         const horarioDB = await Horario.findById(id);
         if (!horarioDB) {
             res.status(400).json({
-                msg: `El horario no existe.`
+                message: `El horario no existe.`
             })
             return;
         }
@@ -22,7 +22,7 @@ const añadirUsuarioAlaAgenda= async (req, res = response) => {
         const usuarioDB = await Usuario.findById(usuario)
         if (!usuarioDB) {
             res.status(400).json({
-                msg: `El usuario no existe.`
+                message: `El usuario no existe.`
             })
             return;
         }
@@ -30,7 +30,7 @@ const añadirUsuarioAlaAgenda= async (req, res = response) => {
         const usuarioHorarioDB = await Agenda.findOne({ 'horario': id, 'usuario': usuario })
         if (usuarioHorarioDB) {
             res.status(400).json({
-                msg: `El usuario ya esta registrado en este horario`
+                message: `El usuario ya esta registrado en este horario`
             })
             return;
         }; 
@@ -63,7 +63,7 @@ const borrarUsuarioDelHorario = async (req, res = response) => {
         const existeEnLaAgenda = await Agenda.findOne ({'horario': id,'usuario': usuario});
         if (!existeEnLaAgenda) {
             res.status(400).json({
-                msg: `El usuario no esta registrado en este horario`
+                message: `El usuario no esta registrado en este horario`
             })
             return
         };

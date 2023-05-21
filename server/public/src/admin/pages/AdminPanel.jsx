@@ -2,15 +2,15 @@ import { NavLink } from 'react-router-dom';
 import '../../ui/css/admin.css'
 
 
-export const AdminLogin = () => {
+export const AdminPanel = () => {
 
 
   return (
     <>
-      <div className='adminLogin'>
+      <div className='adminPanel'>
         <h2>Búsquedas</h2>
-        <ul className="adminLoginul">
-          <li className='adminLi'>
+        <ul className="adminPanelul">
+          {/* <li className='adminLi'>
             <NavLink className="boton" to="/SearchUser">
               <button className='botonAdmin'>Buscar usuario</button>
             </NavLink>
@@ -19,16 +19,16 @@ export const AdminLogin = () => {
             <NavLink className="boton" to="/SearchActivity">
               <button className='botonAdmin'>Buscar actividad</button>
             </NavLink>
-          </li>
+          </li> */}
           <li className='adminLi'>
             <NavLink className="boton" to="/SearchSchedule">
-              <button className='botonAdmin'>Buscar horario</button>
+              <button className='botonAdmin'>Busquedas</button>
             </NavLink>
           </li>
         </ul>
 
         <h2>Usuarios</h2>
-        <ul className="adminLoginul">
+        <ul className="adminPanelul">
 
           <li className='adminLi'>
             <NavLink className="boton" to="/GetUser">
@@ -53,7 +53,7 @@ export const AdminLogin = () => {
         </ul>
 
         <h2>Actividades</h2>
-        <ul className="adminLoginul">
+        <ul className="adminPanelul">
 
           <li className='adminLi'>
             <NavLink className="boton" to="/GetActivity">
@@ -78,7 +78,7 @@ export const AdminLogin = () => {
         </ul>
 
         <h2>Horarios</h2>
-        <ul className="adminLoginul">
+        <ul className="adminPanelul">
           <li className='adminLi'>
             <NavLink className="boton" to="/GetSchedule">
               <button className='botonAdmin'>Mostrar Horarios</button>
@@ -102,7 +102,7 @@ export const AdminLogin = () => {
         </ul>
 
         <h2>Agenda</h2>
-        <ul className="adminLoginul">
+        <ul className="adminPanelul">
           <li className='adminLi'>
             <NavLink className="boton" to="/CreateUserinSchedule">
               <button className='botonAdmin'>Crear usuario en el horario.</button>

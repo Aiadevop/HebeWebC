@@ -9,7 +9,7 @@ export const CreateUserinSchedule = () => {
 
   //Función actualizar usuario
   async function onSubmitUpdateUseronSchedule(event) {
-
+    
     event.preventDefault();
     try {
 
@@ -34,14 +34,18 @@ export const CreateUserinSchedule = () => {
       const data = await response.json();
 
       if (response.status !== 200) {
-        throw data.error || new Error(`Request failed with status ${response.status}`);
+        if(response.status === 400){
+          alert("El usuario ya está registrado en este horario")
+          return;
+        }else
+        throw data.error || new Error(`Request failed with status ${response.message}`);
       }
       alert(`Usuario ${usuarioPutInput} añadido`)
 
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se ha podido registrar al usuario");
     }
   }
 

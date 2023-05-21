@@ -1,41 +1,55 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-export const CreateSchedule = () => {
+export const SearchSchedule = () => {
   const [diaInput, setDiaInput] = useState('');
   const [desdeInput, setDesdeInput] = useState('');
   const [hastaInput, setHastaInput] = useState();
   const [salaInput, setSalaInput] = useState('');
   const [actividadInput, setActividadInput] = useState('');
+  const [scheduleInput, setScheduleInput] = useState('')
+  const [dayResult, setDayResult] = useState('')
+  const [fromResult, setFromResult] = useState('')
+  const [toResult, setToResult] = useState('')
+  const [spaceResult, setSpaceResult] = useState('')
+  const [activityResult, setActivityResult] = useState('')
+  const [activityNameResult, setActivityNameResult] = useState('')
   const url = 'http://localhost:8080/'
 
-  //Función crearUsuario
-  async function onSubmitCreateSchedule(event) {
+
+  //Función obtener Actividads.
+  async function onSubmitGetSchedule(event) {
+
     event.preventDefault();
     try {
       let _datos = {
-        dia: diaInput,
-        desde: desdeInput,
-        hasta: hastaInput,
-        sala: salaInput,
-        actividad: actividadInput,
-        rol: "USER_ROLE"
+        scheduleInput
       }
 
-      const response = await fetch(`${url}api/horarios`, {
-        method: "POST",
-        body: JSON.stringify(_datos),
+      const response = await fetch(`${url}api/buscar/horarios?nombre=lara`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         }
-
       });
 
-      const dataUser = await response.json();
-  
+      const data = await response.json();
+      console.log(data)
+      setScheduleInput(data.results[0])
+      setDayResult(data.results[0].dia)
+      setFromResult(data.results[0].desde)
+      setToResult(data.results[0].hasta)
+      setSpaceResult(data.results[0].sala)
+      setActivityResult(data.results[0].actividad)
+      setActivityNameResult(data.results[0].nombreActividad)
+
       if (response.status !== 200) {
-        throw dataUser.error || new Error(`Request failed with status ${response.status}`);
+        if (response.status === 400) {
+          alert('Hay un error en los datos')
+          return;
+        }
+        throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-      alert(`Horario ${diaInput} creado`)
+      // setResult(data);
 
     } catch (error) {
       // Consider implementing your own error handling logic here
@@ -44,14 +58,13 @@ export const CreateSchedule = () => {
     }
   }
 
-
-
   return (
     <>
       <br />
-      <form className='formAdmin' onSubmit={onSubmitCreateSchedule} >
-        <h1>Nuevo Horario</h1>
+      <form className='formAdmin' onSubmit={onSubmitGetSchedule} >
+        <label>Filtro </label>
         <br />
+        <div>  
         <label>Día </label>
         <select
           name="dia"
@@ -71,7 +84,8 @@ export const CreateSchedule = () => {
         <br />
         <label>Hora inicio </label>
         <select name="desde" value={desdeInput} onChange={(e) => setDesdeInput(e.target.value)}>
-          {['0:00', '0:15', '0:30', '0:45',
+          {['Hora inicio',
+            '0:00', '0:15', '0:30', '0:45',
             '1:00', '1:15', '1:30', '1:45',
             '2:00', '2:15', '2:30', '2:45',
             '3:00', '3:15', '3:30', '3:45',
@@ -103,7 +117,8 @@ export const CreateSchedule = () => {
         <br />
         <label>Hora fin </label>
         <select name="hasta" value={hastaInput} onChange={(e) => setHastaInput(e.target.value)}>
-          {['0:00', '0:15', '0:30', '0:45',
+          {['Hora fin',
+            '0:00', '0:15', '0:30', '0:45',
             '1:00', '1:15', '1:30', '1:45',
             '2:00', '2:15', '2:30', '2:45',
             '3:00', '3:15', '3:30', '3:45',
@@ -146,22 +161,27 @@ export const CreateSchedule = () => {
           <option value="SALA3">SALA3</option>
           <option value="SALA4">SALA4</option>
         </select>
-
-        <br />
-        <label>Id actividad </label>
+        </div>
         <input
           type="text"
-          name="actividad"
-          placeholder="actividad"
-          value={actividadInput}
-          onChange={(e) => setActividadInput(e.target.value)}
+          name="horario"
+          placeholder="id horario"
+          value={scheduleInput}
+          onChange={(e) => setScheduleInput(e.target.value)}
         />
         <br />
-        <input className='botonForm' type="submit" value="Crear horario" />
-
-
+        <input className='botonForm' type="submit" value="Buscar" />
+        <br />
+        <label>
+          {dayResult} {fromResult}-{toResult} {spaceResult}
+          <br />
+          {activityNameResult} - {activityResult}
+        </label>
       </form>
-      <br />
+      <div >
+
+
+      </div>
     </>
   )
 }

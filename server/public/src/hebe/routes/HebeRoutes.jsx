@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Carrito, Inicio, Contacto, Horarios, Productos, Tricking, FunCore, Pilates, Taekwondo } from "../../hebe/pages/index.js"
-import { GetUser, CreateUser, UpdateUser, DeleteUser, CreateActivity, GetActivity, UpdateActivity, DeleteActivity, GetSchedule, CreateSchedule, UpdateSchedule, DeleteSchedule, CreateUserinSchedule, DeleteUsertoSchedule, DeleteUsertoDiary, SearchUser, SearchActivity, SearchSchedule } from "../../auth/pages/AdminPages"
+import { GetUser, CreateUser, UpdateUser, DeleteUser, CreateActivity, GetActivity, UpdateActivity, DeleteActivity, GetSchedule, CreateSchedule, UpdateSchedule, DeleteSchedule, CreateUserinSchedule, DeleteUsertoSchedule, DeleteUsertoDiary, SearchUser, SearchActivity, SearchSchedule } from "../../admin/pages/AdminPages"
 import { Nav } from "../../ui"
-import { Login } from "../pages/Login"
 import { Atribuciones } from "../pages/Atribuciones.jsx"
-import { AdminLogin } from "../../auth/index.js"
+import { Login } from "../../auth/pages/Login.jsx"
+import { AdminPanel } from "../../admin/pages/AdminPanel.jsx"
 
 
 
@@ -29,7 +29,7 @@ export const HebeRoutes = () => {
         <Route path="taekwondo" element={<Taekwondo />}></Route>
         <Route path="login" element={<Login />}></Route>
         {/* Estas rutas deberan ser privadas        */}        
-        <Route path="adminlogin" element={<AdminLogin />}></Route>
+        <Route path="adminpanel" element={<AdminPanel />}></Route>
         {/* Rutas user */}
         <Route path="getUser" element={<GetUser />}></Route>
         <Route path="createUser" element={<CreateUser />}></Route>

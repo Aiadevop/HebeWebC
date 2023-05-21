@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export const DeleteUsertoSchedule = () => {
-  const [idInput, setIdInput] = useState('');
+export const DeleteUsertoDiary = () => {
+
   const [usuarioInput, setUsuarioInput] = useState('');
 
 
@@ -12,39 +12,33 @@ export const DeleteUsertoSchedule = () => {
 
     event.preventDefault();
     try {
-
+      
       if (usuarioInput === "" || undefined) {
-        alert(`Todos los campos son obligatorios`)
+        alert(`Es obligatorio el id de usuario`)
         return;
-      }
-
-      if (idInput === "" || undefined) {
-        alert(`Todos los campos son obligatorios`)
-        return;
-      }
+      } 
 
       let _datos = {
         usuario: usuarioInput,
         rol: "USER_ROLE"
       }
 
-      const response = await fetch(`${url}api/agendas/agenda/${idInput}`, {
+      const response = await fetch(`${url}api/agendas/agenda/`, {
         method: "DELETE",
         body: JSON.stringify(_datos),
         headers: {
           "Content-Type": "application/json",
         }
 
-      });  
-
+      });
       const data = await response.json();
   
       if (response.status !== 200) {
         if (response.status === 400) {
-          alert(`El usuario no existe en este horario.`)
+          alert(`El usuario no existe en la agenda.`)
           return;
         } else {          
-          throw data.error || new Error(`Request failed with status ${response.status}`);
+          throw data.error || new Error(`Request failed with status ${response.message}`);
         }
       }      
       alert(`Usuario ${usuarioInput} borrado`)
@@ -52,7 +46,7 @@ export const DeleteUsertoSchedule = () => {
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      alert("No se ha podido borrar al usuario");
     }
   }
 
@@ -62,17 +56,8 @@ export const DeleteUsertoSchedule = () => {
     <>
       <br />
       <form className='formAdmin' onSubmit={onSubmitDeleteUseronSchedule} >
-        <h1>Borrar usuario del horario</h1>
-        <br />
-        <label>Id horario </label>
-        <input
-          type="text"
-          name="id"
-          placeholder="Id"
-          value={idInput}
-          onChange={(e) => setIdInput(e.target.value)}
-        />
-        <br />
+        <h1>Dar de baja al usuario en la agenda</h1>
+        <br/>
         <label>Id usuario </label>
         <input
           type="text"
@@ -81,10 +66,11 @@ export const DeleteUsertoSchedule = () => {
           value={usuarioInput}
           onChange={(e) => setUsuarioInput(e.target.value)}
         />
-        <input className='botonForm' type="submit" value="Borrar usuario" />
+        <input className='botonForm' type="submit" value="Dar de baja usuario" />
       </form>
 
 
     </>
   )
+ 
 }

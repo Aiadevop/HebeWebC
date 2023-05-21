@@ -7,13 +7,13 @@ export const Login = () => {
   const [users, setUsers] = useState([])
   const [nameInput, setNameInput] = useState('');
   const [dniInput, setDniInput] = useState('');
-  const [telefonoInput, setTelefonoInput] = useState();
+  const [telefonoInput, setTelefonoInput] = useState('');
   const [correoInput, setCorreoInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [idInput, setIdInput] = useState('');
   const [namePutInput, setNamePutInput] = useState('');
   const [dniPutInput, setDniPutInput] = useState('');
-  const [telefonoPutInput, setTelefonoPutInput] = useState();
+  const [telefonoPutInput, setTelefonoPutInput] = useState('');
   const [correoPutInput, setCorreoPutInput] = useState('');
   const [passwordPutInput, setPasswordPutInput] = useState('');
   const [menuOpened, setMenuOpened] = useState(false);
