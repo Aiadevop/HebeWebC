@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_OPTIONS='--inspect=0.0.0.0:9229' nodemon app"
+    "start:api:dev": "cross-env NODE_OPTIONS='--inspect=0.0.0.0:9229' nodemon app",
+    "start:api": "node app.js",
+    "start:web": "cross-env NODE_OPTIONS='--inspect=0.0.0.0:9229"
   },
   "author": "Lara Alonso",
   "license": "ISC",

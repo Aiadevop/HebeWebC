@@ -8,15 +8,15 @@ export const Horarios = () => {
                 <br />
 
                 <h2 className='horarioH2'>Horarios</h2>
-                <a href="public\resources\descargas\horariosHebe.pdf" download className='horarioH5'>Descargar horarios</a>
+                <a href="\resources\descargas\horariosHebe.pdf" download className='horarioH5'>Descargar horarios</a>
                 <div className='horariocontainer'>
                     <div>
                         <br />
-                        <img className='taehorario' src='public\resources\img\horarios\horarioHebe.png'></img>
+                        <img className='taehorario' src='\resources\img\horarios\horarioHebe.png'></img>
                     </div>
                     <div>
                         <br />
-                        <img className='taehorario' src='public\resources\img\horarios\horarioQuintela.png'></img>
+                        <img className='taehorario' src='\resources\img\horarios\horarioQuintela.png'></img>
                     </div>
                 </div>
             </div>

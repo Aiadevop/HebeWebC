@@ -3,16 +3,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../css/cartel.css";
 
 const images = [
-  <img alt="funcore" height='100' src="public\resources\img\slide\funcoreCut.png" />,
-  <img alt="combate" src="public\resources\img\slide\combateCut.png" />,
-  <img alt="taekwondo" height='100' src="public\resources\img\slide\taekwondoCut.png" />,
-  <img alt="tricking" height='100' src="public\resources\img\slide\trickingCut.png" />,
+  <img alt="funcore" height='100' src="\resources\img\slide\funcoreCut.png" />,
+  <img alt="combate" src="\resources\img\slide\combateCut.png" />,
+  <img alt="taekwondo" height='100' src="\resources\img\slide\taekwondoCut.png" />,
+  <img alt="tricking" height='100' src="\resources\img\slide\trickingCut.png" />,
 ];
 const imagesmovil = [
-  <img alt="funcore" height='100' src="public\resources\img\slide\slidemovil\funcoreCut.png" />,
-  <img alt="combate" src="public\resources\img\slide\slidemovil\combateCut.png" />,
-  <img alt="taekwondo" height='100' src="public\resources\img\slide\slidemovil\taekwondoCut.png" />,
-  <img alt="tricking" height='100' src="public\resources\img\slide\slidemovil\trickingCut.png" />,
+  <img alt="funcore" height='100' src="\resources\img\slide\slidemovil\funcoreCut.png" />,
+  <img alt="combate" src="\resources\img\slide\slidemovil\combateCut.png" />,
+  <img alt="taekwondo" height='100' src="\resources\img\slide\slidemovil\taekwondoCut.png" />,
+  <img alt="tricking" height='100' src="\resources\img\slide\slidemovil\trickingCut.png" />,
 ];
 
 export function Slide() {
