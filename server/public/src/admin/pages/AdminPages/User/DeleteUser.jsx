@@ -17,7 +17,7 @@ export const DeleteUser = () => {
 
     try {
 
-      const response = await fetch(`${url}api/usuarios/${idInput}`, {
+      const response = await fetch(`${url}api/usuarios/auth/${idInput}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

@@ -22,7 +22,7 @@ export const CreateSchedule = () => {
         rol: "USER_ROLE"
       }
 
-      const response = await fetch(`${url}api/horarios`, {
+      const response = await fetch(`${url}api/horarios/auth/`, {
         method: "POST",
         body: JSON.stringify(_datos),
         headers: {

@@ -8,7 +8,7 @@ export const CreateActivity = () => {
 
   //Función crearUsuario
   async function onSubmitCreateActivity(event) {
-    debugger
+
     event.preventDefault();
     try {
       let _datos = {
@@ -21,7 +21,7 @@ export const CreateActivity = () => {
         return;
       }
 
-      const response = await fetch(`${url}api/actividades`, {
+      const response = await fetch(`${url}api/actividades/auth/`, {
         method: "POST",
         body: JSON.stringify(_datos),
         headers: {

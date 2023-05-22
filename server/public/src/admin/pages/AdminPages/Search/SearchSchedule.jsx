@@ -25,7 +25,7 @@ export const SearchSchedule = () => {
         scheduleInput
       }
 
-      const response = await fetch(`${url}api/buscar/horarios?nombre=lara`, {
+      const response = await fetch(`${url}api/buscar/auth/horarios?nombre=lara`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

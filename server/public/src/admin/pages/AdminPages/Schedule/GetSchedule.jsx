@@ -13,7 +13,7 @@ export const GetSchedule = () => {
     event.preventDefault();
     try {
 
-      const response = await fetch(`${url}api/horarios`, {
+      const response = await fetch(`${url}api/horarios/auth/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

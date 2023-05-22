@@ -12,28 +12,28 @@ export function ActInicio() {
                 <ul className="listImage">
                     <NavLink className="carta" to="/taekwondo">
                         <div className="cartaActividad">
-                            <img className="imagenicon" src="../src/ui/iconos/taeicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\taeicon.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Taekwondo</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
                     </NavLink>
                     <NavLink className="carta" to="/pilates">
                         <div className="cartaActividad" >
-                            <img className="imagenicon" src="../src/ui/iconos/pilatesfino.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\pilatesicon.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Pilates</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
                     </NavLink>
                     <NavLink className="carta" to="/funcore">
                         <div className="cartaActividad" >
-                            <img className="imagenicon" src="../src/ui/iconos/funcoreicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\funcoreicon.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Fun Core</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
                     </NavLink>
                     <NavLink className="carta" to="/tricking">
                         <div className="cartaActividad" >
-                            <img className="imagenicon" src="../src/ui/iconos/deporte.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\deporte.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Tricking</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
@@ -46,14 +46,14 @@ export function ActInicio() {
                 <ul className="listImage">
                     <NavLink className="carta" to="/taekwondo">
                         <div className="cartaActividad">
-                            <img className="imagenicon" src="../src/ui/iconos/taeicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\taeicon.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Taekwondo</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
                     </NavLink>
                     <NavLink className="carta"  to="/pilates">
                         <div className="cartaActividad">
-                            <img className="imagenicon" src="../src/ui/iconos/pilatesicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\pilatesicon.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Pilates</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
@@ -62,14 +62,14 @@ export function ActInicio() {
                 <ul className="listImage">
                     <NavLink className="carta"  to="/funcore">
                         <div className="cartaActividad">
-                            <img className="imagenicon" src="../src/ui/iconos/funcoreicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\funcoreicon.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Fun Core</h2>
                             <p className="picon">Saber más ...</p>
                         </div>
                     </NavLink>
                     <NavLink className="carta" to="/tricking">
                         <div className="cartaActividad" >
-                            <img className="imagenicon" src="../src/ui/iconos/trickingicon.png" alt="iconotaekwondo" />
+                            <img className="imagenicon" src="public\resources\iconos\deporte.png" alt="iconotaekwondo" />
                             <h2 className="h2icon">Tricking</h2>
                             <p className="picon">Saber más ...</p>
                         </div>

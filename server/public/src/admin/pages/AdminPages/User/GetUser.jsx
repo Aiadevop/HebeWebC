@@ -14,7 +14,7 @@ export const GetUser = () => {
     event.preventDefault();
     try {
 
-      const response = await fetch(`${url}api/usuarios?limite=100`, {
+      const response = await fetch(`${url}api/usuarios/auth/?limite=100`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

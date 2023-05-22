@@ -37,11 +37,11 @@ export const Nav = () => {
             <nav className='navbar'>
                 <div className="navelements">
                     <div className='grupo1'>
-                        <img src="../src/ui/iconos/hamburguesa.png" className='toggle logoHebe' onClick={() => setMenuOpened(!menuOpened)} alt="Menu Hamburguesa" />
+                        <img src="public\resources\iconos\hamburguesa.png" className='toggle logoHebe' onClick={() => setMenuOpened(!menuOpened)} alt="Menu Hamburguesa" />
 
                         <li className='nav-menu-item'>
                             <Link to="/" className='logo nav-link nav-link' onClick={() => setMenuOpened(false)}>
-                                <img src="../src/ui/img/logos/hebeNegro.png" className="logoHebe" alt="HebeTaekwondoLogo" />
+                                <img src="public\resources\img\logos\hebeNegro.png" className="logoHebe" alt="HebeTaekwondoLogo" />
                             </Link>
                         </li>
                     </div>
@@ -66,7 +66,7 @@ export const Nav = () => {
                             <br></br>
                                       <li className='nav-menu-item carrologin'>
                                 <NavLink className="" to="/login">
-                                    <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="login" alt="Login" /></button>
+                                    <button className='botonicon'><img src="public\resources\iconos\usuario2.png" className="login" alt="Login" /></button>
                                 </NavLink>
                             </li>
                         </ul>
@@ -82,7 +82,7 @@ export const Nav = () => {
                         </li> */}
                         <li className='nav-menu-item ne'>
                             <NavLink className="" to="/login">
-                                <button className='botonicon'><img src="../src/ui/iconos/usuario2.png" className="logoHebe" alt="Login" /></button>
+                                <button className='botonicon'><img src="public\resources\iconos\usuario2.png" className="logoHebe" alt="Login" /></button>
                             </NavLink>
                         </li>
                     </div>

@@ -28,7 +28,7 @@ export const DeleteUsertoSchedule = () => {
         rol: "USER_ROLE"
       }
 
-      const response = await fetch(`${url}api/agendas/agenda/${idInput}`, {
+      const response = await fetch(`${url}api/agendas/auth/agenda/${idInput}`, {
         method: "DELETE",
         body: JSON.stringify(_datos),
         headers: {

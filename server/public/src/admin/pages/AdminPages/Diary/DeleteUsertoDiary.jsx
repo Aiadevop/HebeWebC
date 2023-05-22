@@ -23,7 +23,7 @@ export const DeleteUsertoDiary = () => {
         rol: "USER_ROLE"
       }
 
-      const response = await fetch(`${url}api/agendas/agenda/`, {
+      const response = await fetch(`${url}api/agendas/auth/agenda/`, {
         method: "DELETE",
         body: JSON.stringify(_datos),
         headers: {

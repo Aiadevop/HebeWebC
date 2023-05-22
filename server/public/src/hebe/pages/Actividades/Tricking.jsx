@@ -16,13 +16,13 @@ export const Tricking = () => {
           
           </p>
         </div>
-        <img className='taekwondoImg tricking' src='../../src/ui/img/trikingweb.png'></img>
+        <img className='taekwondoImg tricking' src='public\resources\img\trikingweb.png'></img>
       </div>
 
       <div className='taekwondoContainerMovil'>
       <h1 className='taeh1 movil'>Tricking Hebe Moaña</h1>
 
-        <img className='taekwondoImgx' src='../../src/ui/img/trikingweb.png'></img>
+        <img className='taekwondoImgx' src='public\resources\img\trikingweb.png'></img>
         <div className='taekwondo'>
    
           <p>
@@ -34,7 +34,7 @@ export const Tricking = () => {
       <div >        
           <br/>
           <h3 className='divHorario'>Horarios</h3>
-          <a href="src\ui\descargas\horariosHebe.pdf" download className='horarioH5'>Descargar horarios</a>
+          <a href="public\resources\descargas\horariosHebe.pdf" download className='horarioH5'>Descargar horarios</a>
           <br/>
           <h3 className='divHorarioh3'>Tenemos clases de tricking de <strong>lunes a viernes</strong> de <strong>17:30-19:30 </strong> en el pabellón de Quintela.</h3>   
           <br/>

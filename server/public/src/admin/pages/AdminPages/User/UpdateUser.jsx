@@ -46,7 +46,7 @@ export const UpdateUser = () => {
         _datos.password = passwordPutInput;
       }
 
-      const response = await fetch(`${url}api/usuarios/${idInput}`, {
+      const response = await fetch(`${url}api/usuarios/auth/${idInput}`, {
         method: "PUT",
         body: JSON.stringify(_datos),
         headers: {

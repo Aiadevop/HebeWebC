@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { HebeRoutesPrivate } from '../hebe/routes/HebeRoutesPrivate'
+import { HebeRoutesPrivate } from '../auth/routes/HebeRoutesPrivate'
 import { HebeRoutes} from '../hebe/routes/HebeRoutes'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'

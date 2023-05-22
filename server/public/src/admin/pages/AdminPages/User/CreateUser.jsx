@@ -24,7 +24,7 @@ export const  CreateUser= () => {
         rol: "USER_ROLE"
       }
 
-      const response = await fetch(`${url}api/usuarios`, {
+      const response = await fetch(`${url}api/usuarios/auth`, {
         method: "POST",
         body: JSON.stringify(_datos),
         headers: {

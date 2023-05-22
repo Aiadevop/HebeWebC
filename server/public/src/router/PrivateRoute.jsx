@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 
 export const PrivateRoute = ({ children }) => {
-    debugger
+
     let token = sessionStorage.getItem('token')
     console.log(token)
 
@@ -16,7 +16,7 @@ export const PrivateRoute = ({ children }) => {
 
 
 // export const PrivateRoute = ({ children }) => {
-//     debugger
+
 
 //     // const navigate = useNavigate();
 //     // const { logged } = useContext(AuthContext)

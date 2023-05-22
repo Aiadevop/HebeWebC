@@ -26,7 +26,7 @@ export const UpdateActivity = () => {
         _datos.precio = precioPutInput;
       }
 
-      const response = await fetch(`${url}api/actividades/${idInput}`, {
+      const response = await fetch(`${url}api/actividades/auth/${idInput}`, {
         method: "PUT",
         body: JSON.stringify(_datos),
         headers: {

@@ -11,7 +11,7 @@ export const DeleteSchedule = () => {
     event.preventDefault();
     try {
 
-      const response = await fetch(`${url}api/horarios/${idInput}`, {
+      const response = await fetch(`${url}api/horarios/auth/${idInput}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

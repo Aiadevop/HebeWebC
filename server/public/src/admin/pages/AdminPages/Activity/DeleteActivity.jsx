@@ -11,7 +11,7 @@ export const DeleteActivity = () => {
     event.preventDefault();
     try {
 
-      const response = await fetch(`${url}api/actividades/${idInput}`, {
+      const response = await fetch(`${url}api/actividades/auth/${idInput}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

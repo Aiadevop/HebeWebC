@@ -21,7 +21,7 @@ export const CreateUserinSchedule = () => {
         _datos.usuario = usuarioPutInput;
       }
 
-      const response = await fetch(`${url}api/agendas/agenda/${idInput}`, {
+      const response = await fetch(`${url}api/agendas/auth/agenda/${idInput}`, {
         method: "POST",
         body: JSON.stringify(_datos),
         headers: {

@@ -14,7 +14,7 @@ export const GetActivity = () => {
     event.preventDefault();
     try {
 
-      const response = await fetch(`${url}api/actividades/`, {
+      const response = await fetch(`${url}api/actividades/auth/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

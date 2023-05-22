@@ -17,7 +17,7 @@ export const SearchUser = () => {
         userInput
       }
 
-      const response = await fetch(`${url}api/buscar/usuarios/${userInput}`, {
+      const response = await fetch(`${url}api/buscar/auth/usuarios/${userInput}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

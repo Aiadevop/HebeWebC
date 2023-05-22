@@ -17,7 +17,7 @@ export const SearchActivity = () => {
         activityInput
       }
 
-      const response = await fetch(`${url}api/buscar/actividades/${activityInput}`, {
+      const response = await fetch(`${url}api/buscar/auth/actividades/${activityInput}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

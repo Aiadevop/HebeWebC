@@ -39,7 +39,7 @@ export const UpdateSchedule = () => {
         _datos.actividad = actividadInput;
       }
 
-      const response = await fetch(`${url}api/horarios/${idInput}`, {
+      const response = await fetch(`${url}api/horarios/auth/${idInput}`, {
         method: "PUT",
         body: JSON.stringify(_datos),
         headers: {
